@@ -6,6 +6,5 @@ public class Mancala
 		System.out.println("First line added testing commit system");
 		System.out.println("Second commit after deleting and importing repo.");
 		// test      
-		// test2
 	}
 }

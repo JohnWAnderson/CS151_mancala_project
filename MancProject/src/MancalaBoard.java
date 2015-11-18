@@ -39,7 +39,7 @@ public class MancalaBoard
 		for(int i =1; i < 7; i++)
 		{
 			JLabel tempB = new JLabel( "               " + "B" + (7 - i) + "                ");
-			top.add(tempB); 
+			top.add(tempB);   
 			JLabel tempA = new JLabel("               " + "A" + i + "                ");
 			bot.add(tempA);
 		}

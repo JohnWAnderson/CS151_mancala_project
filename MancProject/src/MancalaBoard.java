@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;  
 
-public class MancalaBoard implements Strategy
+public class MancalaBoard
 {	
 	private ArrayList<Pit> pits = new ArrayList<Pit>();
 	private int type;
@@ -39,7 +39,7 @@ public class MancalaBoard implements Strategy
 		for(int i =1; i < 7; i++)
 		{
 			JLabel tempB = new JLabel( "               " + "B" + (7 - i) + "                ");
-			top.add(tempB); 
+			top.add(tempB);   
 			JLabel tempA = new JLabel("               " + "A" + i + "                ");
 			bot.add(tempA);
 		}

@@ -8,6 +8,6 @@ public class Mancala
 		int i = 1;
 		while(i != 0) {
 			System.out.println("Best loop ever");
-		}
+		} //wtf yo
 	}
 }

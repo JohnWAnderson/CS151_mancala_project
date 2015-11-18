@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MancalaBoard implements Strategy
+public class MancalaBoard
 {	
 	private ArrayList<Pit> pits = new ArrayList<Pit>();
 	private int type;

@@ -43,7 +43,6 @@ public class MancalaBoard
 			JLabel tempA = new JLabel("               " + "A" + i + "                ");
 			bot.add(tempA);
 		}
-		
 		frame.add(bigpit1, BorderLayout.EAST);
 		frame.add(bigpit2, BorderLayout.WEST);
 		frame.add(center, BorderLayout.CENTER);

@@ -1,4 +1,5 @@
 
-public interface strategy {
-
-}
+public interface strategy 
+{ 
+	//public 
+}	

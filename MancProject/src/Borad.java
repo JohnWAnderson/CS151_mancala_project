@@ -1,5 +1,6 @@
+import javax.swing.JFrame;
+
 public interface Borad 
 { 
-	public void SetGameBorad();
-	
+	public Borad SetGameBorad();
 }	

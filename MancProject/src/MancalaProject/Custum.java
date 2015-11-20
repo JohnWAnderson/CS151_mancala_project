@@ -29,7 +29,7 @@ public class Custum implements Borad
 		Pit big1 = new Pit(100,200);
 		Pit big2 = new Pit(100,200);
 		JPanel bigpit1 = new JPanel();
-		JPanel bigpit2 = new JPanel(); 
+		JPanel bigpit2 = new JPanel();
 		bigpit1.add(big1);
 		bigpit2.add(big2);
 		JPanel top = new JPanel();

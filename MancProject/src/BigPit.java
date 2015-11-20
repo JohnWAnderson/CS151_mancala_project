@@ -5,6 +5,5 @@ public class BigPit extends Pit
 	{
 		super(width, hight);
 	}
-	
-
+	  
 }

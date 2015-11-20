@@ -12,10 +12,10 @@ import javax.swing.JPanel;
 
 public class Custum implements Borad
 {
-	private ArrayList<Pit> pits = new ArrayList<Pit>();
 	@Override
 	public void SetGameBorad(Graphics2D g, ArrayList<Pit> pit) 
 	{	
+		
 		JFrame frame = new JFrame("mancala");
 		frame.setSize(1000, 300);	
 		JPanel center = new JPanel();
@@ -23,7 +23,7 @@ public class Custum implements Borad
 		for(int i =0; i < 12; i++)
 		{
 			Pit temp = new Pit(100,100);
-			pits.add(temp);
+			pit.add(temp);
 			center.add(temp);
 		}
 		Pit big1 = new Pit(100,200);

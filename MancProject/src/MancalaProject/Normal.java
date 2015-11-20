@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 public class Normal implements Borad
 {
 	private ArrayList<Pit> pits = new ArrayList<Pit>();
@@ -46,5 +45,4 @@ public class Normal implements Borad
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}	
-
 }

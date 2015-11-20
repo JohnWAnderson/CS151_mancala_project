@@ -2,14 +2,13 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;	
-
 public class StartUp 
 {
-	private String Type = null;
+	 String Type;
+	private MancalaBoard game;
 	StartUp()
 	{
 		JFrame menu = new JFrame("menu");
@@ -23,12 +22,12 @@ public class StartUp
 	        	 menu.setVisible(false);
 	        }
 	     });
-		JButton custum = new JButton("Custum");
+		JButton custum = new JButton("Custom");
 		custum.addActionListener(new ActionListener()
 	     {
 	        public void actionPerformed(ActionEvent e)
 	        {
-	        	Type = "Custum";
+	        	Type = "Custom";
 	        	menu.setVisible(false);
 	        }
 	     });
@@ -38,5 +37,4 @@ public class StartUp
 		menu.add(header, BorderLayout.CENTER);
 		menu.setVisible(true);
 	}
-
 }

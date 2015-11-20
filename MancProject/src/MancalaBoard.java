@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class MancalaBoard extends JFrame
 {	
 	private Borad b;
-	public MancalaBoard()
+	public MancalaBoard(String Type)
 	{  
 		
 	}

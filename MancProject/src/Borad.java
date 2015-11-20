@@ -1,4 +1,4 @@
-public interface strategy 
+public interface Borad 
 { 
 	public void SetGameBorad();
 	

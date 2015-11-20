@@ -5,8 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.JLabel;	
 
 public class StartUp 
 {
@@ -33,15 +32,11 @@ public class StartUp
 	        	menu.setVisible(false);
 	        }
 	     });
-		JPanel middle = new JPanel(new BorderLayout(2,1));
 		JLabel header = new JLabel("  Pick your board type");
 		menu.add(normal,BorderLayout.EAST);
 		menu.add(custum, BorderLayout.WEST);
 		menu.add(header, BorderLayout.CENTER);
 		menu.setVisible(true);
 	}
-	public String getType()
-	{
-		return Type;
-	}
+
 }

@@ -28,7 +28,8 @@ public class StartUp
 	        public void actionPerformed(ActionEvent e)
 	        {
 	        	Type = "Custom";
-	        	menu.setVisible(false);
+	        	menu.setVisible(false); // ds
+	        	
 	        }
 	     });
 		JLabel header = new JLabel("  Pick your board type");

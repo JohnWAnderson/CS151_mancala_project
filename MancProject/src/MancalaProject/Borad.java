@@ -1,3 +1,4 @@
+package MancalaProject;
 import javax.swing.JFrame;
 
 public interface Borad 

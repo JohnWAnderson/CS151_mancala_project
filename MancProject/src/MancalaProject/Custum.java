@@ -1,3 +1,6 @@
+package MancalaProject;
+import BigPit;
+
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;

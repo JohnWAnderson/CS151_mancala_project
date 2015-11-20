@@ -1,7 +1,7 @@
 package MancalaProject;
-import BigPit;
 
 import java.awt.BorderLayout;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ public class Custum implements Borad
 {
 	private ArrayList<Pit> pits = new ArrayList<Pit>();
 	@Override
-	public Borad SetGameBorad() 
+	public void SetGameBorad(Graphics2D g, ArrayList<Pit> pit) 
 	{	
 		JFrame frame = new JFrame("mancala");
 		frame.setSize(1000, 300);	
@@ -26,8 +26,8 @@ public class Custum implements Borad
 			pits.add(temp);
 			center.add(temp);
 		}
-		BigPit big1 = new BigPit(100,200);
-		BigPit big2 = new BigPit(100,200);
+		Pit big1 = new Pit(100,200);
+		Pit big2 = new Pit(100,200);
 		JPanel bigpit1 = new JPanel();
 		JPanel bigpit2 = new JPanel(); 
 		bigpit1.add(big1);

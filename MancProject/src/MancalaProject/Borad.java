@@ -1,7 +1,9 @@
 package MancalaProject;
-import javax.swing.JFrame;
+
+import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 public interface Borad 
 { 
-	public Borad SetGameBorad();
+	void SetGameBorad(Graphics2D g, ArrayList<Pit> pit);
 }	

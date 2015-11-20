@@ -12,24 +12,21 @@ import javax.swing.JPanel;
 public class MancalaBoard
 {	
 	private ArrayList<Pit> pits = new ArrayList<Pit>();
-	private int type;
-	private Color color;
-	public MancalaBoard(Color color, int type, int numberStones)
+
+	public MancalaBoard()
 	{  
-		this.color = color;   
-		this.type = type;
 		JFrame frame = new JFrame("mancala");
 		frame.setSize(1000, 300);	
 		JPanel center = new JPanel();
 		center.setLayout(new GridLayout(2,6));
 		for(int i =0; i < 12; i++)
 		{
-			pits.add(new Pit(100, 100, this.type, this.color));
-			JLabel temp = new JLabel(pits.get(i));
+			Pit temp = new Pit(100,100);
+			pits.add(temp);
 			center.add(temp);
 		}
-		JLabel big1 = new JLabel(new BigPit(150,200,this.type,this.color));
-		JLabel big2 = new JLabel(new BigPit(150,200,this.type,this.color));
+		BigPit big1 = new BigPit(100,200);
+		BigPit big2 = new BigPit(100,200);
 		JPanel bigpit1 = new JPanel();
 		JPanel bigpit2 = new JPanel(); 
 		bigpit1.add(big1);
@@ -43,23 +40,12 @@ public class MancalaBoard
 			JLabel tempA = new JLabel("               " + "A" + i + "                ");
 			bot.add(tempA);
 		}
-		frame.add(bigpit1, BorderLayout.EAST);
-		frame.add(bigpit2, BorderLayout.WEST);
-		frame.add(center, BorderLayout.CENTER);
 		frame.add(top, BorderLayout.NORTH);
 		frame.add(bot, BorderLayout.SOUTH);
+		frame.add(bigpit1, BorderLayout.WEST);
+		frame.add(bigpit2, BorderLayout.EAST);
+		frame.add(center, BorderLayout.CENTER);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
-	@Override
-	public int ShapeFormatter() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public int NumberOfStones() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
 }

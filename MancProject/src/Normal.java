@@ -1,4 +1,11 @@
 
-public class Normal {
+public class Normal implements strategy
+{
+
+	@Override
+	public void SetGameBorad() {
+		
+		
+	}
 
 }

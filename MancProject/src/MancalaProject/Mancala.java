@@ -4,6 +4,8 @@ import javax.swing.JOptionPane;
 
 public class Mancala
 {	
+	private final static String[] SETUP = { "Clasic", "Custom" };
+	private final static String[] SETUP_2 = { "3 Stones", "4 Stones" };
 	public static void main(String[] args)
 	{
 
@@ -17,11 +19,11 @@ public class Mancala
 		int option = JOptionPane.showOptionDialog(null,
 				"Pick what game stlye that ", "Mancala Game",
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
-				MancalaHold.SETUP, MancalaHold.SETUP[0]);
+				SETUP, SETUP[0]);
 		int stones = JOptionPane.showOptionDialog(null,
 				"How many stones would you like to start with?",
 				"Mancala Game", JOptionPane.YES_NO_OPTION,
-				JOptionPane.QUESTION_MESSAGE, null, MancalaHold.SETUP_2, null);
+				JOptionPane.QUESTION_MESSAGE, null, SETUP_2, null);
 		if (stones == -1) {
 			JOptionPane.showMessageDialog(null, "GoodBye");
 			System.exit(0);

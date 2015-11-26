@@ -24,10 +24,6 @@ public class Mancala
 				"How many stones would you like to start with?",
 				"Mancala Game", JOptionPane.YES_NO_OPTION,
 				JOptionPane.QUESTION_MESSAGE, null, SETUP_2, null);
-		if (stones == -1) {
-			JOptionPane.showMessageDialog(null, "GoodBye");
-			System.exit(0);
-		}
 		//if (stones == 0)
 		//	model.setInitStones(3);
 		//else

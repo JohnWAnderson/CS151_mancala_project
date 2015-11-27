@@ -1,16 +1,17 @@
 package MancalaProject;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
-import javax.swing.JComponent;
-
-public class Pit extends JComponent
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
+import javax.swing.Icon;
+public class Pit implements Icon
 {
 	private static final long serialVersionUID = 4542933551792089953L;
 	private int width;
 	private int height;
 	private String style;
-	Pit(int width, int hight)
+	Pit(int width, int hight, int stones)// styles
 	{
 		this.width = width;
 		this.height = hight;
@@ -23,17 +24,27 @@ public class Pit extends JComponent
 	{
 		return this.height;
 	}
-	public void paint(Graphics g)
+	@Override
+	public int getIconHeight() {
+		return height;
+	}
+	@Override
+	public int getIconWidth() {
+		return width;
+	}	
+	@Override
+	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
-		super.paintComponents(g);
-		Graphics g2 = (Graphics2D) g;
-		 if(style.equals("Normal"))
-         {
-                 g2.drawOval(0, 0, (int)(getWidth()) , (int)(getHeight()));
-         }
-         else if(style.equals("Custom"))
-         {
-                 g2.drawRect(0, 0, (int) (getWidth()),(int) (getHeight()));
-         }
+		Graphics2D g2 = (Graphics2D)g;
+	    if(style == "normal")
+	    {
+	    	Ellipse2D.Double temp = new Ellipse2D.Double(x,y,width, height);
+	    	g2.draw(temp);
+	    }
+	    else
+	    {
+	    	Rectangle2D.Double temp = new Rectangle2D.Double(x,y,width, height);
+	    	g2.draw(temp);
+	    }
 	}
 }

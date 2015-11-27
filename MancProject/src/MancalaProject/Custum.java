@@ -15,7 +15,6 @@ public class Custum implements Borad
 	@Override
 	public void SetGameBorad(Graphics2D g, ArrayList<Pit> pit) 
 	{	
-		
 		JFrame frame = new JFrame("mancala");
 		frame.setSize(1000, 300);	
 		JPanel center = new JPanel();

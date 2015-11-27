@@ -8,7 +8,6 @@ public class Stones {
 		this.x = x;
 		this.y = y;
 	}
-
 	public void setX(int x) {
 		this.x = x;
 	}

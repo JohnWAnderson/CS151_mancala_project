@@ -21,7 +21,7 @@ public class Custum implements Borad
 		center.setLayout(new GridLayout(2,6));
 		for(int i =0; i < 12; i++)
 		{
-			Pit temp = new Pit(100,100);
+			Pit temp = new Pit(100,100, "normal");
 			pit.add(temp);
 			center.add(temp);
 		}

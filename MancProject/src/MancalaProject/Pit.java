@@ -11,10 +11,11 @@ public class Pit implements Icon
 	private int width;
 	private int height;
 	private String style;
-	Pit(int width, int hight, int stones)// styles
+	public Pit(int width, int height, String style)// styles
 	{
 		this.width = width;
-		this.height = hight;
+		this.height = height;
+		this.style = style;
 	} 
 	public int getWidth()
 	{

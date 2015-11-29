@@ -1,3 +1,5 @@
+package MancalaProject;
+
 import java.util.ArrayList;
 
 import javax.swing.event.ChangeListener;

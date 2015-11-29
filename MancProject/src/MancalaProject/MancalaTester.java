@@ -1,3 +1,5 @@
+package MancalaProject;
+
 import javax.swing.JOptionPane;
 
 

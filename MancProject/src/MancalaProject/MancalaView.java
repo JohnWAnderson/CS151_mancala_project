@@ -13,24 +13,43 @@ import javax.swing.event.ChangeListener;
 
 public class MancalaView
 {
+	public JPanel centerPits;
 	private MancalaModel model;
-	public MancalaView()
+	public MancalaView(Borad style)
 	{
 		model = new MancalaModel();
+		model.setStyle(style);
 	}
 	
-	public JPanel StartMiddlePits(Borad style)
+	public JPanel StartMiddlePits()
 	{
-		JPanel centerPits = new JPanel();
+		centerPits = new JPanel();
         GridLayout gridLayout = new GridLayout(2,6);
         centerPits.setLayout(gridLayout);
         for(int i = 0; i < 12; i++)
         {	
-        	Pit temp = new Pit(80,style, 0);
+        	Pit temp = new Pit(80,model.getStyle(), 0);
         	JLabel pit = new JLabel(temp);
         	centerPits.add(pit);
         	model.addPit(temp);
         }
+		return centerPits;
+	}
+	/**
+	 * updates tha JPanel by not readding the pits to the model
+	 * @return centerPits  the 12 center pits
+	 */
+	public JPanel MiddlePitsUpdate()
+	{
+		centerPits = new JPanel();
+		 GridLayout gridLayout = new GridLayout(2,6);
+	        centerPits.setLayout(gridLayout);
+	        for(int i = 0; i < 12; i++)
+	        {	
+	        	Pit temp = new Pit(80,model.getStyle(), 0);
+	        	JLabel pit = new JLabel(temp);
+	        	centerPits.add(pit);
+	        }
 		return centerPits;
 	}
 	public JPanel toplabel()
@@ -54,11 +73,11 @@ public class MancalaView
          }
 		 return topPanel;
 	}
-	public JPanel BigPit(Borad style, int player)
+	public JPanel BigPit(int player)
 	{
 		JPanel big = new JPanel();
 		//big.setPreferredSize(new Dimension(160, 250));
-		BigPit bigpit = new BigPit(190, style, 0, player); // 1 is player 2
+		BigPit bigpit = new BigPit(190, model.getStyle(), 0, player); // 1 is player 2
 		JLabel label = new JLabel(bigpit);
 		big.add(label);
 		return big;

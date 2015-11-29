@@ -21,7 +21,7 @@ public class Mancala
 	public Mancala(Borad style)
 	{
 		model = new MancalaModel();
-		view = new MancalaView();
+		view = new MancalaView(style);
 		this.style = style;
 		ChangeListener listener = new ChangeListener()
 		{
@@ -42,9 +42,9 @@ public class Mancala
 		frame.setLayout(new BorderLayout());
 		center = new JPanel();
 		center.setLayout(new BorderLayout());
-		center.add(view.BigPit(style, 0), BorderLayout.WEST);  // big pit
-		center.add(view.BigPit(style, 1), BorderLayout.EAST);	// big pit
-		center.add(view.StartMiddlePits(style), BorderLayout.CENTER);	// pits
+		center.add(view.BigPit(0), BorderLayout.WEST);  // big pit
+		center.add(view.BigPit(1), BorderLayout.EAST);	// big pit
+		center.add(view.MiddlePitsUpdate(), BorderLayout.CENTER);	// pits
 		center.add(view.toplabel(), BorderLayout.NORTH);	// top label
 		center.add(view.botlabel(), BorderLayout.SOUTH);	// bot label
 		frame.add(view.ManA(), BorderLayout.WEST);		//
@@ -61,9 +61,9 @@ public class Mancala
 		frame.setLayout(new BorderLayout());
 		center = new JPanel();
 		center.setLayout(new BorderLayout());
-		center.add(view.BigPit(style, 0), BorderLayout.WEST);  // big pit
-		center.add(view.BigPit(style, 1), BorderLayout.EAST);	// big pit
-		center.add(view.StartMiddlePits(style), BorderLayout.CENTER);	// pits
+		center.add(view.BigPit(0), BorderLayout.WEST);  // big pit
+		center.add(view.BigPit(1), BorderLayout.EAST);	// big pit
+		center.add(view.StartMiddlePits(), BorderLayout.CENTER);	// pits
 		center.add(view.toplabel(), BorderLayout.NORTH);	// top label
 		center.add(view.botlabel(), BorderLayout.SOUTH);	// bot label
 		frame.add(view.ManA(), BorderLayout.WEST);		//

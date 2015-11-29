@@ -1,28 +1,27 @@
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
+
 import javax.swing.Icon;
-public class Pit implements Icon
+
+public class BigPit implements Icon
 {
-	private int size;
+	private int player;
 	private Borad style;
+	private int size;
 	private int stones;
-	public Pit(int size, Borad style, int stones)
+	public BigPit(int size , Borad style, int stones, int Player)
 	{
 		this.size = size;
 		this.style = style;
 		this.stones = stones;
+		this.player = Player;
 	}
-	public void addStones(int stones)
+	public boolean player1()
 	{
-		this.stones = stones;
+		return player == 0;
 	}
-	public int getstones()
-	{
-		return stones;
-	}
+	
 	@Override
 	public int getIconHeight() {
 		return size;
@@ -30,11 +29,11 @@ public class Pit implements Icon
 
 	@Override
 	public int getIconWidth() {
-		return size;
+		return size/2;
 	}
 	@Override
 	public void paintIcon(Component c, Graphics g, int x, int y) {
 		Graphics2D g2 = (Graphics2D)g;
-		style.drawpits(g2, x, y, stones, size);
+		style.drawbigpits(g2, x, y, stones, size);
 	}
 }

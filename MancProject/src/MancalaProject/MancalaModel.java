@@ -1,35 +1,41 @@
-package MancalaProject;
-
 import java.util.ArrayList;
 
-import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class MancalaModel {
-private ArrayList<Integer> stones;
-ArrayList<ChangeListener> listeners;
+public class MancalaModel 
+{
+	public ArrayList<Pit> pits;
+	private Borad style;
+	private ArrayList<ChangeListener> Listeners;
+	public MancalaModel()
+	{
+		pits = new ArrayList<Pit>();
+		Listeners = new ArrayList<ChangeListener>();
+	}
+	public void setStyle(Borad style) {
+		this.style = style;
 
-public MancalaModel() {
-	stones  = new ArrayList<>();
-	listeners = new ArrayList<>();
-}
-public void attach(ChangeListener c) {
-	this.listeners.add(c);
-}
-/**
- * boolean player1 true=player1 false=player2
- * stones[0] = left bigpit(player1)
- * stones[7]= right bigpit(player2)
- * @param selectedPit
- * @param player
- */
-public void update(int selectedPit, boolean player1) {
-	
-	for (int i = 0; i < stones.get(selectedPit); i++) {
-		stones.set(Integer.valueOf(selectedPit+i), stones.get(selectedPit + i) + stones.get(selectedPit-i));
 	}
-	for (ChangeListener l : this.listeners) {
-		l.stateChanged(new ChangeEvent(this));
+	public Borad getStyle() {
+		return style;
 	}
-}
+	public void setStones(int number)
+	{
+		for(Pit p : pits)
+		{
+			p.addStones(number);
+		}
+	}
+	public void addChangeListener(ChangeListener listener)
+	{
+		Listeners.add(listener);
+	}
+	public ArrayList<Pit> getPits()
+	{
+		return pits;
+	}
+	public void addPit(Pit temp)
+	{
+		pits.add(temp);
+	}
 }

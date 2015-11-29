@@ -1,9 +1,13 @@
-package MancalaProject;
-
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-public interface Borad 
-{ 
-	void SetGameBorad(Graphics2D g, ArrayList<Pit> pit);
-}	
+import javax.swing.JPanel;
+
+public interface Borad
+{
+	void drawbigpits(Graphics2D g2, int x, int y, int stones, int size);
+	void drawpits(Graphics2D g2, int x, int y, int stones, int size);
+	int stonespot();
+}

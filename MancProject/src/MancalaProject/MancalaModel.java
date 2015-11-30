@@ -28,6 +28,10 @@ public class MancalaModel
 			p.addStones(number);
 		}
 	}
+	/**public void clearStones()
+	{
+		clear the selected pits stones
+	}*/
 	public void addChangeListener(ChangeListener listener)
 	{
 		Listeners.add(listener);

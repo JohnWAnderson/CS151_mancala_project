@@ -86,7 +86,7 @@ public class Mancala implements ChangeListener
 	}
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		this.view.MiddlePitsUpdate();
+		//this.view.MiddlePitsUpdate();
 		
 	}
 }   

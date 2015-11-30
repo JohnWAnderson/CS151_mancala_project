@@ -30,7 +30,7 @@ public class MancalaModel
 	}
 	/**public void clearStones()
 	{
-		clear the selected pits stones
+		needs to clear the cliped pit stones
 	}*/
 	public void addChangeListener(ChangeListener listener)
 	{

@@ -26,6 +26,10 @@ public class Pit implements Icon
 	{
 		return stones;
 	}
+	public void Clear()
+	{
+		stones = 0;
+	}
 	@Override
 	public int getIconHeight() {
 		return size;

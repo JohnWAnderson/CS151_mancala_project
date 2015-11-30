@@ -33,11 +33,11 @@ public class MancalaModel
 		}
 	}
 	
-	/*public void clearStones()
+	public void clearPit(int i)
 	{
-
-		clear the selected pits stones
-	}*/
+		Pit temp = pits.get(i);
+		temp.Clear();
+	}
 	
 	public void attach(ChangeListener listener) {
 		this.listeners.add(listener);

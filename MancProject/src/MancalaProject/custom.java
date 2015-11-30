@@ -28,7 +28,7 @@ public class custom implements Borad
 			 }
 		String temp = String.valueOf(stones);
 		g2.setColor(Color.BLACK);
-		g2.drawString(temp, x-2, y-2);
+		g2.drawString(temp, x+2, y+10);
 	}
 
 	@Override

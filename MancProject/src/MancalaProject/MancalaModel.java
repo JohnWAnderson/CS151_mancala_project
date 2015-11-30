@@ -2,21 +2,21 @@ package MancalaProject;
 
 import java.util.ArrayList;
 
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class MancalaModel 
 {
 	public ArrayList<Pit> pits;
 	private Borad style;
-	private ArrayList<ChangeListener> Listeners;
+	private ArrayList<ChangeListener> listeners;
 	public MancalaModel()
 	{
 		pits = new ArrayList<Pit>();
-		Listeners = new ArrayList<ChangeListener>();
+		listeners = new ArrayList<ChangeListener>();
 	}
 	public void setStyle(Borad style) {
 		this.style = style;
-
 	}
 	public Borad getStyle() {
 		return style;
@@ -27,10 +27,14 @@ public class MancalaModel
 		{
 			p.addStones(number);
 		}
+		
+		for (ChangeListener l : this.listeners) {
+			l.stateChanged(new ChangeEvent(this));
+		}
 	}
-	public void addChangeListener(ChangeListener listener)
+	public void attach(ChangeListener listener)
 	{
-		Listeners.add(listener);
+		listeners.add(listener);
 	}
 	public ArrayList<Pit> getPits()
 	{
@@ -39,5 +43,9 @@ public class MancalaModel
 	public void addPit(Pit temp)
 	{
 		pits.add(temp);
+		
+		for (ChangeListener l : this.listeners) {
+			l.stateChanged(new ChangeEvent(this));
+		}
 	}
 }

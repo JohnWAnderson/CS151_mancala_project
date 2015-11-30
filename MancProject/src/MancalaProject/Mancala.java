@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class Mancala
+public class Mancala implements ChangeListener
 {	
 	private final String[] SETUP_2 = { "3 Stones", "4 Stones" };
 	private MancalaModel model;
@@ -23,13 +23,14 @@ public class Mancala
 		model = new MancalaModel();
 		view = new MancalaView(style);
 		this.style = style;
-		ChangeListener listener = new ChangeListener()
+		
+		/*ChangeListener listener = new ChangeListener()
 		{
 			public void stateChanged(ChangeEvent e) {
 				refresh();
 			}
-		};
-		model.addChangeListener(listener);
+		};*/
+		model.attach(this);
 		start();
 	}
 	public void refresh()
@@ -82,5 +83,10 @@ public class Mancala
 		else
 			model.setStones(4);
 		//model.update();
+	}
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		this.view.MiddlePitsUpdate();
+		
 	}
 }   

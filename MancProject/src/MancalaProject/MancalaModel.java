@@ -32,12 +32,12 @@ public class MancalaModel
 			l.stateChanged(new ChangeEvent(this));
 		}
 	}
-	/**public void clearStones()
+	
+	/*public void clearStones()
 	{
 
 		clear the selected pits stones
 	}*/
-	
 	
 	public void attach(ChangeListener listener) {
 		this.listeners.add(listener);

@@ -36,11 +36,6 @@ public class Mancala implements ChangeListener
 	public void refresh()
 	{
 		center.setVisible(false);
-		frame.setVisible(false);
-		/**
-		frame = new JFrame();
-		frame.setSize(new Dimension(800,310));
-		frame.setLayout(new BorderLayout());
 		center = new JPanel();
 		center.setLayout(new BorderLayout());
 		center.add(view.BigPit(0), BorderLayout.WEST);  // big pit
@@ -48,12 +43,9 @@ public class Mancala implements ChangeListener
 		center.add(view.MiddlePitsUpdate(), BorderLayout.CENTER);	// pits
 		center.add(view.toplabel(), BorderLayout.NORTH);	// top label
 		center.add(view.botlabel(), BorderLayout.SOUTH);	// bot label
-		frame.add(view.ManA(), BorderLayout.WEST);		//
-		frame.add(view.ManB(), BorderLayout.EAST);
 		frame.add(center, BorderLayout.CENTER);
 		frame.setResizable(false);
 		frame.setVisible(true);
-		*/
 	}
 	public void start()
 	{	

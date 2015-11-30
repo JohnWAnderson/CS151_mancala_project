@@ -34,10 +34,18 @@ public class MancalaModel
 	}
 	/**public void clearStones()
 	{
+
 		clear the selected pits stones
 	}*/
+	
+	
 	public void attach(ChangeListener listener) {
 		this.listeners.add(listener);
+
+	}
+	public void addChangeListener(ChangeListener listener)
+	{
+		listeners.add(listener);
 
 	}
 	public ArrayList<Pit> getPits()

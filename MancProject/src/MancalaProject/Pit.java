@@ -20,7 +20,7 @@ public class Pit implements Icon
 	}
 	public void addStones(int stones)
 	{
-		this.stones = stones;
+		this.stones += stones;
 	}
 	public int getstones()
 	{

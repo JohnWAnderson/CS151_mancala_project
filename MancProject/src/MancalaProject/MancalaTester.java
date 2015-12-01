@@ -10,6 +10,7 @@ public class MancalaTester
 	{
 		Borad B1 = new classic();
 		Borad B2 = new custom();
+		MancalaModel dataModel = new MancalaModel(); // single dataModel to be shared by entire program
 		int selection = JOptionPane.showConfirmDialog(null,
 				"Would you like to play a game", "Mancala",
 				JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -23,9 +24,9 @@ public class MancalaTester
 				SETUP, SETUP[0]);
 		//System.out.println(boardstyle);
 		if (boardstyle == 0) {
-			Mancala temp = new Mancala(B1);
+			Mancala temp = new Mancala(B1, dataModel); // dataModel passed
 		} else {
-			Mancala temp = new Mancala(B2);
+			Mancala temp = new Mancala(B2, dataModel); // dataModel passed
 		}
 	
 	}

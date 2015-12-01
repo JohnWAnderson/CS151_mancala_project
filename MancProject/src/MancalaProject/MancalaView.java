@@ -15,9 +15,9 @@ public class MancalaView
 {
 	public JPanel centerPits;
 	private MancalaModel model;
-	public MancalaView(Borad style)
+	public MancalaView(Borad style, MancalaModel dataModel)
 	{
-		model = new MancalaModel();
+		model = dataModel;//new MancalaModel(); old code
 		model.setStyle(style);
 	}
 	
@@ -44,9 +44,10 @@ public class MancalaView
 		centerPits = new JPanel();
 		 GridLayout gridLayout = new GridLayout(2,6);
 	        centerPits.setLayout(gridLayout);
-	        for(int i = 0; i < 12; i++)
+	        for(int i = 0; i < model.pits.size(); i++) // this needed to be restricted to the current size of pit ArrayList
 	        {	
-	        	Pit temp = new Pit(80,model.getStyle(), 3);    // model.getStonesPit(i)    this is what should be were 3 is
+	        	Pit temp = new Pit(80,model.getStyle(), model.getStonesPit(i));    // model.getStonesPit(i)    this is what should be were 3 is
+	        	
 	        	JLabel pit = new JLabel(temp);
 	        	centerPits.add(pit);
 	        }

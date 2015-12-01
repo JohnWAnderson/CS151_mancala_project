@@ -24,6 +24,7 @@ public class MancalaModel
 	public int getStonesPit(int i)
 	{
 		return pits.get(i).getstones();
+		
 	}
 	public void setStones(int number)
 	{

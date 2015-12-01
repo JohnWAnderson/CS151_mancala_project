@@ -18,10 +18,10 @@ public class Mancala implements ChangeListener
 	private JPanel center;
 	public JFrame frame;
 	//public static Borad style;
-	public Mancala(Borad style)
+	public Mancala(Borad style, MancalaModel dataModel) // dataModel passed
 	{
-		model = new MancalaModel();
-		view = new MancalaView(style);
+		model = dataModel; //new MancalaModel(); old code
+		view = new MancalaView(style, this.model); //passing main model to the view
 		this.style = style;
 		
 		/*ChangeListener listener = new ChangeListener()

@@ -15,15 +15,14 @@ import javax.swing.JPanel;
 
 public class custom implements Borad
 {
-	private Stone Stone;
 	@Override
 	public void drawbigpits(Graphics2D g2, int x, int y, int stones, int size)  {
 		Rectangle2D.Double pit = new Rectangle2D.Double(0, 0, size/2 -5, size - 5);
 		 g2.draw(pit);
 			for(int i = 0; i < stones; i ++)
 			 {
-				 Ellipse2D.Double temp = new Ellipse2D.Double(stonespot(), stonespot(), 10, 10);
-				 g2.setColor(Stone.stonecolor());
+				 Ellipse2D.Double temp = new Ellipse2D.Double(stonespot()+25, stonespot()+30, 10, 10);
+				 g2.setColor(Color.BLACK);
 				 g2.fill(temp);
 			 }
 		String temp = String.valueOf(stones);
@@ -37,8 +36,8 @@ public class custom implements Borad
 		 g2.draw(pit);
 			for(int i = 0; i < stones; i ++)
 			 {
-				 Ellipse2D.Double temp = new Ellipse2D.Double(stonespot(), stonespot(), 10, 10);
-				 g2.setColor(Stone.stonecolor());
+				 Ellipse2D.Double temp = new Ellipse2D.Double(stonespot()+25, stonespot()+30, 10, 10);
+				 g2.setColor(Color.BLACK);
 				 g2.fill(temp);
 			 }
 		String temp = String.valueOf(stones);
@@ -53,4 +52,5 @@ public class custom implements Borad
 		int temp = random.nextInt(((50-25) +1) +0);
 		return temp;
 	}
+	
 }

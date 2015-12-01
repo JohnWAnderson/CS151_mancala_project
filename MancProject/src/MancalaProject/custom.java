@@ -21,7 +21,7 @@ public class custom implements Borad
 		 g2.draw(pit);
 			for(int i = 0; i < stones; i ++)
 			 {
-				 Ellipse2D.Double temp = new Ellipse2D.Double(stonespot()+25, stonespot()+30, 10, 10);
+				Ellipse2D.Double temp = new Ellipse2D.Double(stonespot()+25, stonespot()+30, 10, 10);
 				 g2.setColor(Color.BLACK);
 				 g2.fill(temp);
 			 }
@@ -36,7 +36,7 @@ public class custom implements Borad
 		 g2.draw(pit);
 			for(int i = 0; i < stones; i ++)
 			 {
-				 Ellipse2D.Double temp = new Ellipse2D.Double(stonespot()+25, stonespot()+30, 10, 10);
+				Ellipse2D.Double temp = new Ellipse2D.Double(stonespot()+25, stonespot()+30, 10, 10);
 				 g2.setColor(Color.BLACK);
 				 g2.fill(temp);
 			 }
@@ -52,5 +52,4 @@ public class custom implements Borad
 		int temp = random.nextInt(((50-25) +1) +0);
 		return temp;
 	}
-	
 }

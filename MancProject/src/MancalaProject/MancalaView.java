@@ -46,7 +46,7 @@ public class MancalaView
 	        centerPits.setLayout(gridLayout);
 	        for(int i = 0; i < 12; i++)
 	        {	
-	        	Pit temp = new Pit(80,model.getStyle(), 3);
+	        	Pit temp = new Pit(80,model.getStyle(), 3);    // model.getStonesPit(i)    this is what should be were 3 is
 	        	JLabel pit = new JLabel(temp);
 	        	centerPits.add(pit);
 	        }

@@ -1,4 +1,4 @@
-package MancalaProject;
+	package MancalaProject;
 
 
 import java.awt.Component;

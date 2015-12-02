@@ -65,6 +65,7 @@ public class Mancala implements ChangeListener
 		frame.setResizable(false);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		model.setStones(0);
 		int startStones = JOptionPane.showOptionDialog(null,
 				"How many stones would you like to start with?",
 				"Mancala Game", JOptionPane.YES_NO_OPTION,

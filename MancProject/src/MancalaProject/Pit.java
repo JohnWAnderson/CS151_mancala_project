@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import javax.swing.Icon;
+import javax.swing.JComponent;
 public class Pit implements Icon
 {
 	private int size;

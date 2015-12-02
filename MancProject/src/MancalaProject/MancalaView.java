@@ -3,6 +3,8 @@ package MancalaProject;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -29,6 +31,7 @@ public class MancalaView
         for(int i = 0; i < 12; i++)
         {	
         	Pit temp = new Pit(80,model.getStyle(), 0);
+        	//temp.addMouseListener(l);
         	JLabel pit = new JLabel(temp);
         	centerPits.add(pit);
         	model.addPit(temp);
@@ -36,7 +39,7 @@ public class MancalaView
 		return centerPits;
 	}
 	/**
-	 * updates tha JPanel by not readding the pits to the model
+	 * updates tha JPanel by not reading the pits to the model
 	 * @return centerPits  the 12 center pits
 	 */
 	public JPanel MiddlePitsUpdate()

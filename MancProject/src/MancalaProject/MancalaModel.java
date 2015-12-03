@@ -11,11 +11,21 @@ public class MancalaModel
 	public ArrayList<Pit> pits;
 	private Borad style;
 	private ArrayList<ChangeListener> listeners;
+	private int curPlayer; //variable to keep track of current player, see constructor for value meanings
+	
 	public MancalaModel()
 	{
+		this.curPlayer = 1; // 1 for player 1, -1 for player 2
 		pits = new ArrayList<Pit>();
 		listeners = new ArrayList<ChangeListener>();
 	}
+	public int getPlayer() {
+		return this.curPlayer;
+	}
+	public void setPlayer(int play) {
+		this.curPlayer = play;
+	}
+	
 	public void setStyle(Borad style) {
 		this.style = style;
 	}
@@ -44,12 +54,16 @@ public class MancalaModel
 		temp.Clear();
 	}
 	
-	public void playerMove(int selectedPit, int player)
+	public void playerMove(int selectedPit)
 	{
+		/* It looks like this method checks if access to bigPits are allowed, but it doesn't check which big pit to access
+		 *  It has to know which big pit to  skip
+		 */
+		/*
 		boolean toAccessBigPit; // Checks if Big Pit will be accessed depending on the selected pit and # of stones in the selected pit.
 		int numPitsToAccess;
 		int total = getStonesPit(selectedPit);
-		if(player == 0 && (selectedPit >= 0 && selectedPit <=5)) // Checks if selected pit is in the 1st row of center pits
+		if(this.curPlayer == 1 && (selectedPit >= 0 && selectedPit <=5)) // Checks if selected pit is in the 1st row of center pits
 		{
 			numPitsToAccess = selectedPit - total;
 			if(numPitsToAccess < 0) { toAccessBigPit = true; } // toAccessBigPit is true if Big Pit when # of pits accessed surpasses the player's Big pit.
@@ -59,9 +73,14 @@ public class MancalaModel
 	 
 			}
 		}
-		else if(player == 0 && (selectedPit >= 6 && selectedPit <= 11)) // Checks if selected pit is in the 2nd row of center pits
+		else if(this.curPlayer == 1 && (selectedPit >= 6 && selectedPit <= 11)) // Checks if selected pit is in the 2nd row of center pits
 		{
 	 
+		} */
+		this.curPlayer = (this.curPlayer * -1); // alternate current player each time to negative and nonnegative num
+		
+		for (ChangeListener l : this.listeners) { // notify listeners (view)
+			l.stateChanged(new ChangeEvent(this));
 		}
 	}
 	

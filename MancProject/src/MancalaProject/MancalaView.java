@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -30,16 +31,11 @@ public class MancalaView
         centerPits.setLayout(gridLayout);
         for(int i = 0; i < 12; i++)
         {	
-        	Pit temp = new Pit(80,model.getStyle(), 0);
+        	Pit temp = new Pit(80,model.getStyle(), 0, i, model);
         	
         	JLabel pit = new JLabel(temp);
         	
-        	/* mouse listener, maybe in wrong place */
-        	pit.addMouseListener(new MouseAdapter() {
-        		public void MousePressed(MouseEvent me) {
-        			System.out.println("JLabel has been pressed");
-        		}
-        	});
+        	pit.addMouseListener(temp); // add Mouse listener to each pit object passing pit to it
         	
         	centerPits.add(pit);
         	model.addPit(temp);
@@ -57,16 +53,10 @@ public class MancalaView
 	        centerPits.setLayout(gridLayout);
 	        for(int i = 0; i < model.pits.size(); i++) // this needed to be restricted to the current size of pit ArrayList
 	        {	
-	        	Pit temp = new Pit(80,model.getStyle(), model.getStonesPit(i));    // model.getStonesPit(i)    this is what should be were 3 is
+	        	Pit temp = new Pit(80,model.getStyle(), model.getStonesPit(i), i, model);    // model.getStonesPit(i)    this is what should be were 3 is
 	        	
 	        	JLabel pit = new JLabel(temp);
-	        	
-	        	/* mouse listener, maybe in wrong place */
-	        	pit.addMouseListener(new MouseAdapter() {
-	        		public void MousePressed(MouseEvent me) {
-	        			System.out.println("JLabel has been pressed");
-	        		}
-	        	});
+	        	pit.addMouseListener(temp); // add Mouse listener to each pit object passing pit to it
 	        	
 	        	centerPits.add(pit);
 	        }
@@ -150,5 +140,7 @@ public class MancalaView
 		leftLabel.add(label);
 		return leftLabel;
 	}
+
+
 	
 }

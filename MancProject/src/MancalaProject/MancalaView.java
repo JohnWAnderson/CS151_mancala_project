@@ -31,8 +31,16 @@ public class MancalaView
         for(int i = 0; i < 12; i++)
         {	
         	Pit temp = new Pit(80,model.getStyle(), 0);
-        	//temp.addMouseListener(l);
+        	
         	JLabel pit = new JLabel(temp);
+        	
+        	/* mouse listener, maybe in wrong place */
+        	pit.addMouseListener(new MouseAdapter() {
+        		public void MousePressed(MouseEvent me) {
+        			System.out.println("JLabel has been pressed");
+        		}
+        	});
+        	
         	centerPits.add(pit);
         	model.addPit(temp);
         }
@@ -52,6 +60,14 @@ public class MancalaView
 	        	Pit temp = new Pit(80,model.getStyle(), model.getStonesPit(i));    // model.getStonesPit(i)    this is what should be were 3 is
 	        	
 	        	JLabel pit = new JLabel(temp);
+	        	
+	        	/* mouse listener, maybe in wrong place */
+	        	pit.addMouseListener(new MouseAdapter() {
+	        		public void MousePressed(MouseEvent me) {
+	        			System.out.println("JLabel has been pressed");
+	        		}
+	        	});
+	        	
 	        	centerPits.add(pit);
 	        }
 		return centerPits;

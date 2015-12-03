@@ -44,6 +44,27 @@ public class MancalaModel
 		temp.Clear();
 	}
 	
+	public void playerMove(int selectedPit, int player)
+	{
+		boolean toAccessBigPit; // Checks if Big Pit will be accessed depending on the selected pit and # of stones in the selected pit.
+		int numPitsToAccess;
+		int total = getStonesPit(selectedPit);
+		if(player == 0 && (selectedPit >= 0 && selectedPit <=5)) // Checks if selected pit is in the 1st row of center pits
+		{
+			numPitsToAccess = selectedPit - total;
+			if(numPitsToAccess < 0) { toAccessBigPit = true; } // toAccessBigPit is true if Big Pit when # of pits accessed surpasses the player's Big pit.
+	 
+			for(int i = total; total > 0; i--)
+			{
+	 
+			}
+		}
+		else if(player == 0 && (selectedPit >= 6 && selectedPit <= 11)) // Checks if selected pit is in the 2nd row of center pits
+		{
+	 
+		}
+	}
+	
 	public void attach(ChangeListener listener) {
 		this.listeners.add(listener);
 

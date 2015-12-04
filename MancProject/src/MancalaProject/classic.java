@@ -22,7 +22,7 @@ public class classic implements Borad
 		 g2.draw(pit);
 			for(int i = 0; i < stones; i ++)
 			 {
-				 Ellipse2D.Double temp = new Ellipse2D.Double(stonespot()+25, stonespot()+30, 15, 15);
+				Ellipse2D.Double temp = new Ellipse2D.Double(bigstonesspot()+15, bigstonesspot()+60, 15, 15);
 				 g2.setColor(Color.BLUE);
 				 g2.fill(temp);
 			 }
@@ -51,6 +51,13 @@ public class classic implements Borad
 	{
 		Random random = new Random();
 		int temp = random.nextInt(((50-25) +1) +0);
+		return temp;
+	}
+
+	@Override
+	public int bigstonesspot() {
+		Random random = new Random();
+		int temp = random.nextInt(((50-0) +1) +0);
 		return temp;
 	}
 	

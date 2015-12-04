@@ -75,12 +75,13 @@ public class Pit implements Icon, MouseListener
 			if(this.getId() <= 5 && model.player1Turn() == true)
 			{
 				this.model.clearPit(this.getId());  
+				this.model.playerMove(this.getId());
 			}
 			else if(this.getId() >= 6 && model.player1Turn() == false)
 			{
 				this.model.clearPit(this.getId()); 
+				this.model.playerMove(this.getId());
 			}
-			this.model.playerMove(this.getId());
 			System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
 		}
 		@Override

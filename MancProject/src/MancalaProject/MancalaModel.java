@@ -12,6 +12,7 @@ public class MancalaModel
 	private Borad style;
 	private ArrayList<ChangeListener> listeners;
 	private int curPlayer; //variable to keep track of current player, see constructor for value meanings
+	private int undo;
 	
 	public MancalaModel()
 	{
@@ -21,6 +22,19 @@ public class MancalaModel
 	}
 	public int getPlayer() {
 		return this.curPlayer;
+	}
+	public void setUndo()
+	{
+		this.undo = 3;
+	}
+	public int Undo()
+	{
+		this.undo -= 1;
+		return this.undo;
+	}
+	public boolean checkUndo()
+	{
+		return (this.undo > 0);
 	}
 	public void setPlayer(int play) {
 		this.curPlayer = play;

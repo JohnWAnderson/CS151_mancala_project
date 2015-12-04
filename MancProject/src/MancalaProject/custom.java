@@ -22,7 +22,7 @@ public class custom implements Borad
 			for(int i = 0; i < stones; i ++)
 			 {
 				Ellipse2D.Double temp = new Ellipse2D.Double(stonespot()+25, stonespot()+30, 15, 15);
-				 g2.setColor(stonecolor());
+				 g2.setColor(Color.RED);
 				 g2.fill(temp);
 			 }
 		String temp = String.valueOf(stones);
@@ -37,12 +37,12 @@ public class custom implements Borad
 			for(int i = 0; i < stones; i ++)
 			 {
 				Ellipse2D.Double temp = new Ellipse2D.Double(stonespot()+25, stonespot()+30, 15, 15);
-				 g2.setColor(stonecolor());
+				 g2.setColor(Color.RED);
 				 g2.fill(temp);
 			 }
 		String temp = String.valueOf(stones);
 		g2.setColor(Color.BLACK);
-		g2.drawString(temp, x+5, y-5);
+		g2.drawString(temp, x+5, y);
 	}
 
 	@Override
@@ -52,14 +52,5 @@ public class custom implements Borad
 		int temp = random.nextInt(((50-25) +1) +0);
 		return temp;
 	}
-	
-	@Override
-	public Color stonecolor() {
-		Random color = new Random();		
-		int x = color.nextInt(250-0);
-		int y = color.nextInt(250-0);
-		int z = color.nextInt(250-0);
-		Color temp = new Color(x,y,z);
-		return temp;
-	}
+
 }

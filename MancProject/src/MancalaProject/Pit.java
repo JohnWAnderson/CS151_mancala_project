@@ -55,11 +55,16 @@ public class Pit implements Icon, MouseListener // implements mouseListener now
 		Graphics2D g2 = (Graphics2D)g;
 		style.drawpits(g2, x, y, stones, size);
 	}
-	
+	/**
+	 * use mouse clicked
+	 * @param arg0
+	 */
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void mouseClicked(MouseEvent arg0)
+	{
+		// this.model.clearPit(this.getId());   call
+		System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
+		this.model.playerMove(this.getId());
 	}
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
@@ -80,8 +85,9 @@ public class Pit implements Icon, MouseListener // implements mouseListener now
 	 */
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
-		this.model.playerMove(this.getId());
+	//	System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
+		//this.model.playerMove(this.getId());
+		//this.model.clearPit(this.getId());
 	}
 	@Override
 	public void mouseReleased(MouseEvent arg0) {

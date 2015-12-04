@@ -15,6 +15,7 @@ public class Mancala implements ChangeListener
 	private MancalaModel model;
 	private MancalaView view;
 	private Borad style;
+	private JPanel output;
 	private JPanel center;
 	public JFrame frame;
 	//public static Borad style;
@@ -36,19 +37,24 @@ public class Mancala implements ChangeListener
 	public void refresh()
 	{
 		center.setVisible(false);
-		center = new JPanel();
-		center.setLayout(new BorderLayout());
+		output.setVisible(false);
+		output = new JPanel(new BorderLayout());
+		center = new JPanel(new BorderLayout());
 		center.add(view.BigPit(0), BorderLayout.WEST);  // big pit
 		center.add(view.BigPit(1), BorderLayout.EAST);	// big pit
 		center.add(view.MiddlePitsUpdate(), BorderLayout.CENTER);	// pits
 		center.add(view.toplabel(), BorderLayout.NORTH);	// top label
 		center.add(view.botlabel(), BorderLayout.SOUTH);	// bot label
+		output.add(center, BorderLayout.CENTER);
+		output.add(view.playersTurn(), BorderLayout.SOUTH);
 		frame.add(center, BorderLayout.CENTER);
+		frame.add(view.playersTurn(), BorderLayout.SOUTH);
 		frame.setResizable(false);
 		frame.setVisible(true);
 	}
 	public void start()
 	{	
+		output = new JPanel(new BorderLayout());
 		frame = new JFrame();
 		frame.setSize(new Dimension(800,310));
 		frame.setLayout(new BorderLayout());
@@ -59,9 +65,12 @@ public class Mancala implements ChangeListener
 		center.add(view.StartMiddlePits(), BorderLayout.CENTER);	// pits
 		center.add(view.toplabel(), BorderLayout.NORTH);	// top label
 		center.add(view.botlabel(), BorderLayout.SOUTH);	// bot label
+		output.add(center, BorderLayout.CENTER);
+		output.add(view.playersTurn(), BorderLayout.SOUTH);
 		frame.add(view.ManA(), BorderLayout.WEST);		//
 		frame.add(view.ManB(), BorderLayout.EAST);
-		frame.add(center, BorderLayout.CENTER);
+		//frame.add(view.playersTurn(), BorderLayout.SOUTH);
+		frame.add(output, BorderLayout.CENTER);
 		frame.setResizable(false);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

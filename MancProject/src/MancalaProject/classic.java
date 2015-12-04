@@ -23,7 +23,7 @@ public class classic implements Borad
 			for(int i = 0; i < stones; i ++)
 			 {
 				 Ellipse2D.Double temp = new Ellipse2D.Double(stonespot()+25, stonespot()+30, 15, 15);
-				 g2.setColor(stonecolor());
+				 g2.setColor(Color.BLUE);
 				 g2.fill(temp);
 			 }
 		String temp = String.valueOf(stones);
@@ -38,7 +38,7 @@ public class classic implements Borad
 		for(int i = 0; i < stones; i ++)
 		 {
 			 Ellipse2D.Double temp = new Ellipse2D.Double(stonespot()+25, stonespot()+30, 15, 15);
-			 g2.setColor(stonecolor());
+			 g2.setColor(Color.BLUE);
 			 g2.fill(temp);
 		 }
 			String temp = String.valueOf(stones);
@@ -54,15 +54,6 @@ public class classic implements Borad
 		return temp;
 	}
 	
-	@Override
-	public Color stonecolor() {
-		Random color = new Random();		
-		int x = color.nextInt(250-0);
-		int y = color.nextInt(250-0);
-		int z = color.nextInt(250-0);
-		Color temp = new Color(x,y,z);
-		return temp;
-	}
 
 
 }

@@ -140,7 +140,43 @@ public class MancalaView
 		leftLabel.add(label);
 		return leftLabel;
 	}
-
-
+	public JPanel playersTurn()
+	{
+		JPanel turn = new JPanel();
+		JLabel whoeseTurn = new JLabel();
+		JLabel undoTurn = new JLabel();
+		JLabel Won = new JLabel();
+		if(model.getPlayer() == 1)
+		{
+			whoeseTurn = new JLabel("Player 1 turn: ");
+		}
+		else
+		{
+			whoeseTurn = new JLabel("Player 2 turn: ");
+		}
+		
+		if(model.checkUndo() == true && model.Undo() != 3)
+		{
+			undoTurn = new JLabel("You have " + model.Undo() + "/3 undo's left");
+		}
+		else if(model.Undo() ==0)
+		{
+			undoTurn = new JLabel("You have no more undos");
+		}
+		/**if()
+		{
+			check win condtion then man label for winning player number
+		}*/
+		JButton undo = new JButton("UNDO");
+		
+		turn.setLayout(new BorderLayout());
+		JPanel temp = new JPanel();
+		temp.add(whoeseTurn,  BorderLayout.WEST);
+		temp.add(undoTurn);
+		turn.add(temp, BorderLayout.WEST);
+		turn.add(Won, BorderLayout.CENTER);
+		turn.add(undo,  BorderLayout.EAST);
+		return turn;
+	}
 	
 }

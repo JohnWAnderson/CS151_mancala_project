@@ -171,7 +171,7 @@ public class MancalaModel
 							total--;
 							selectedPit++;
 						}
-						else if(nextPit > 11)
+						else if(nextPit > 11 && !isStoneAddedInBigPit)
 						{
 							isStoneAddedInBigPit = true;
 							total--; // add stone into BigPit
@@ -179,8 +179,6 @@ public class MancalaModel
 						}
 						if(isStoneAddedInBigPit)
 						{
-							total--; // add stone into BigPit
-							selectedPit = 6; // iterate selectedPit to pits index 5
 							pits.get(selectedPit-1).addStones(1);
 							total--;
 							selectedPit--;

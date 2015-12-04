@@ -93,7 +93,11 @@ public class MancalaModel
 		pits = tempPits;
 		bigPits = tempBigPits;
 	}
-	
+	public void saveUndo()
+	{
+		tempPits = pits;
+		tempBigPits = bigPits;
+	}
 	public void playerMove(int thePit)
 	{
 		/* It looks like this method checks if access to bigPits are allowed, but it doesn't check which big pit to access

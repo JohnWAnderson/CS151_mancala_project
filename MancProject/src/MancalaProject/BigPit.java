@@ -23,7 +23,14 @@ public class BigPit implements Icon
 	{
 		return player == 0;
 	}
-	
+	public void addStones(int stones)
+	{
+		this.stones += stones;
+	}
+	public int getstones()
+	{
+		return stones;
+	}
 	@Override
 	public int getIconHeight() {
 		return size;

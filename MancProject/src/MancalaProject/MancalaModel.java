@@ -8,7 +8,8 @@ import javax.swing.event.ChangeListener;
 
 public class MancalaModel 
 {
-	public ArrayList<Pit> pits;
+	private ArrayList<Pit> pits;
+	private ArrayList<BigPit> bigpits;
 	private Borad style;
 	private ArrayList<ChangeListener> listeners;
 	private int curPlayer; //variable to keep track of current player, see constructor for value meanings
@@ -18,14 +19,23 @@ public class MancalaModel
 	{
 		this.curPlayer = 1; // 1 for player 1, -1 for player 2
 		pits = new ArrayList<Pit>();
-		listeners = new ArrayList<ChangeListener>();
+		bigpits = new ArrayList<BigPit>();
+		listeners = new ArrayList<ChangeListener>();	
 	}
 	public int getPlayer() {
 		return this.curPlayer;
 	}
+	public int pitsSize()
+	{
+		return pits.size();
+	}
 	public void setUndo()
 	{
 		this.undo = 3;
+	}
+	public int getPlayerPitStones(int i)
+	{
+		return bigpits.get(i).getstones();
 	}
 	public int Undo()
 	{

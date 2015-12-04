@@ -51,7 +51,7 @@ public class MancalaView
 		centerPits = new JPanel();
 		 GridLayout gridLayout = new GridLayout(2,6);
 	        centerPits.setLayout(gridLayout);
-	        for(int i = 0; i < model.pits.size(); i++) // this needed to be restricted to the current size of pit ArrayList
+	        for(int i = 0; i < model.pitsSize(); i++) // this needed to be restricted to the current size of pit ArrayList
 	        {	
 	        	Pit temp = new Pit(80,model.getStyle(), model.getStonesPit(i), i, model);    // model.getStonesPit(i)    this is what should be were 3 is
 	        	
@@ -85,9 +85,17 @@ public class MancalaView
 	}
 	public JPanel BigPit(int player)
 	{
+		int temp;
+		if(player == 1)
+		{
+			temp = 0; // to make 1'st spot in arraylist 
+		}
+		else
+		{
+			temp = 1; // to make 2'd spot in arraylist
+		}
 		JPanel big = new JPanel();
-		//big.setPreferredSize(new Dimension(160, 250));
-		BigPit bigpit = new BigPit(190, model.getStyle(), 0, player); // 1 is player 2
+		BigPit bigpit = new BigPit(190, model.getStyle(), model.getPlayerPitStones(temp), player); 
 		JLabel label = new JLabel(bigpit);
 		big.add(label);
 		return big;

@@ -40,8 +40,8 @@ public class Mancala implements ChangeListener
 		output.setVisible(false);
 		output = new JPanel(new BorderLayout());
 		center = new JPanel(new BorderLayout());
-		center.add(view.BigPit(0), BorderLayout.WEST);  // big pit
-		center.add(view.BigPit(1), BorderLayout.EAST);	// big pit
+		center.add(view.BigPit(1), BorderLayout.WEST);  // big pit
+		center.add(view.BigPit(-1), BorderLayout.EAST);	// big pit
 		center.add(view.MiddlePitsUpdate(), BorderLayout.CENTER);	// pits
 		center.add(view.toplabel(), BorderLayout.NORTH);	// top label
 		center.add(view.botlabel(), BorderLayout.SOUTH);	// bot label
@@ -60,8 +60,8 @@ public class Mancala implements ChangeListener
 		frame.setLayout(new BorderLayout());
 		center = new JPanel();
 		center.setLayout(new BorderLayout());
-		center.add(view.BigPit(0), BorderLayout.WEST);  // big pit
-		center.add(view.BigPit(1), BorderLayout.EAST);	// big pit
+		center.add(view.BigPit(1), BorderLayout.WEST);  // big pit
+		center.add(view.BigPit(-1), BorderLayout.EAST);	// big pit
 		center.add(view.StartMiddlePits(), BorderLayout.CENTER);	// pits
 		center.add(view.toplabel(), BorderLayout.NORTH);	// top label
 		center.add(view.botlabel(), BorderLayout.SOUTH);	// bot label

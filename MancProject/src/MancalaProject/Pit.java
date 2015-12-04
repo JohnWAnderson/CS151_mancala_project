@@ -78,7 +78,7 @@ public class Pit implements Icon, MouseListener
 		}
 		@Override
 	public void mouseEntered(MouseEvent arg0) {
-			// TODO Auto-generated method stub
+			// TODO Auto-generated method stub	
 			
 		}
 		@Override

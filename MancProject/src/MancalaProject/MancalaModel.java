@@ -88,6 +88,11 @@ public class MancalaModel
 		Pit temp = pits.get(i);
 		temp.Clear();
 	}
+	public void saveUndo()
+	{
+		tempPits = pits;
+		tempBigPits = bigPits;
+	}
 	public void undocalled()
 	{
 		pits = tempPits;
@@ -120,8 +125,6 @@ public class MancalaModel
 	 
 		} */
 		
-		tempPits = pits;
-		tempBigPits = bigPits;
 		int selectedPit = thePit;
 		int total = getStonesPit(selectedPit);
 		int numPitsToAccess;

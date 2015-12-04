@@ -53,6 +53,7 @@ public class MancalaView
 	public JPanel MiddlePitsUpdate()
 	{
 		centerPits = new JPanel();
+		model.saveUndo();
 		 GridLayout gridLayout = new GridLayout(2,6);
 	        centerPits.setLayout(gridLayout);
 	        centerPits.setBackground(Color.LIGHT_GRAY);
@@ -221,7 +222,8 @@ public class MancalaView
 	     {
 	        public void actionPerformed(ActionEvent e)
 	        {
-	        	// needs to call the revert method	
+	        	model.undocalled();
+	        	System.out.println("undo called");
 	        }
 	     });
 		turn.setLayout(new BorderLayout());

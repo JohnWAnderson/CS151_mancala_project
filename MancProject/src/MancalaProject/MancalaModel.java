@@ -134,7 +134,7 @@ public class MancalaModel
 		tempBigPits = bigPits;
 		int selectedPit = thePit;
 		int total = getStonesPit(selectedPit);
-		int numPitsToAccess;
+		int pitToAccess;
 		int destinationPit;
 		boolean isEmpty;
 		if(this.curPlayer == 1)
@@ -157,10 +157,11 @@ public class MancalaModel
 			else if(selectedPit >= 6 && selectedPit <= 11) // Checks if selected Pit is on player B's (-1) side
 			{
 				// selectedPit is cleared in mouseListener;
-				numPitsToAccess = selectedPit + total;
-				if(numPitsToAccess > 11)
+				pitToAccess = selectedPit + total;
+				boolean isStoneAddedInBigPit = false;
+				if(pitToAccess > 11)
 				{
-					int leftOvers;
+					//int leftOvers;
 					while(total > 0)
 					{
 						int nextPit = pits.indexOf(selectedPit+1);
@@ -172,6 +173,12 @@ public class MancalaModel
 						}
 						else if(nextPit > 11)
 						{
+							isStoneAddedInBigPit = true;
+							total--; // add stone into BigPit
+							selectedPit = 6; // iterate selectedPit to pits index 5
+						}
+						if(isStoneAddedInBigPit)
+						{
 							total--; // add stone into BigPit
 							selectedPit = 6; // iterate selectedPit to pits index 5
 							pits.get(selectedPit-1).addStones(1);
@@ -179,8 +186,10 @@ public class MancalaModel
 							selectedPit--;
 						}
 					}
-					
 					bigPits.get(1).addStones(1);
+					// Check if selectedPit is Empty. If True, playerMove(selectedPit)
+					pits.get(selectedPit);
+					
 				}
 				else
 				{

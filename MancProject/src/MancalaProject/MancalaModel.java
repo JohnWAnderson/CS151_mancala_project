@@ -88,18 +88,16 @@ public class MancalaModel
 		Pit temp = pits.get(i);
 		temp.Clear();
 	}
-	public void saveUndo()
-	{
-		tempPits = pits;
-		tempBigPits = bigPits;
-		
-	}
 	public void undocalled()
 	{
 		pits = tempPits;
 		bigPits = tempBigPits;
 	}
-	
+	public void saveUndo()
+	{
+		tempPits = pits;
+		tempBigPits = bigPits;
+	}
 	public void playerMove(int thePit)
 	{
 		/* It looks like this method checks if access to bigPits are allowed, but it doesn't check which big pit to access
@@ -126,6 +124,8 @@ public class MancalaModel
 	 
 		} */
 		
+		tempPits = pits;
+		tempBigPits = bigPits;
 		int selectedPit = thePit;
 		int total = getStonesPit(selectedPit);
 		int numPitsToAccess;
@@ -164,20 +164,16 @@ public class MancalaModel
 							total--;
 							selectedPit++;
 						}
-						else
+						else if(nextPit > 11)
 						{
 							total--; // add stone into BigPit
-							selectedPit = 5;
+							selectedPit = 6; // iterate selectedPit to pits index 5
+							pits.get(selectedPit-1).addStones(1);
+							total--;
+							selectedPit--;
 						}
 					}
 					
-					/*
-					for(int p = 1; p <= total; p++)
-					{
-						int temp = p + selectedPit;
-						pits.get(p + selectedPit)
-					}
-					*/
 					bigPits.get(1).addStones(1);
 				}
 				else

@@ -8,8 +8,10 @@ import javax.swing.event.ChangeListener;
 
 public class MancalaModel 
 {
-	private ArrayList<Pit> pits;
-	private ArrayList<BigPit> bigpits;
+	private ArrayList<Pit> pits;   
+	private ArrayList<Pit> temppits;
+	private ArrayList<BigPit> tempbigpits;
+	private ArrayList<BigPit> bigpits;  // 0  is player 1    1 is player 2
 	private Borad style;
 	private ArrayList<ChangeListener> listeners;
 	private int curPlayer; //variable to keep track of current player, see constructor for value meanings
@@ -86,6 +88,11 @@ public class MancalaModel
 		Pit temp = pits.get(i);
 		temp.Clear();
 	}
+	public void undocalled()
+	{
+		pits = temppits;
+		bigpits = tempbigpits;
+	}
 	
 	public void playerMove(int selectedPit)
 	{
@@ -93,6 +100,8 @@ public class MancalaModel
 		 *  It has to know which big pit to  skip
 		 */
 		/*
+		 * temppits = pits;
+		 * tempbigpits = bigpits;
 		boolean toAccessBigPit; // Checks if Big Pit will be accessed depending on the selected pit and # of stones in the selected pit.
 		int numPitsToAccess;
 		int total = getStonesPit(selectedPit);
@@ -103,7 +112,7 @@ public class MancalaModel
 	 
 			for(int i = total; total > 0; i--)
 			{
-	 
+	 				
 			}
 		}
 		else if(this.curPlayer == 1 && (selectedPit >= 6 && selectedPit <= 11)) // Checks if selected pit is in the 2nd row of center pits

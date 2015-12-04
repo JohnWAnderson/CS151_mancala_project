@@ -142,7 +142,7 @@ public class MancalaModel
 		{
 			if(selectedPit >= 0 && selectedPit <= 5)
 			{
-				pits.get(index).isEmpty();
+				//its.get(index).isEmpty();
 			}
 			else if(selectedPit >= 6 && selectedPit <= 11) // Checks if selected Pit is on player B's (-1) side
 			{

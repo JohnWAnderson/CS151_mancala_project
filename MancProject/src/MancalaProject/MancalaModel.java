@@ -9,9 +9,9 @@ import javax.swing.event.ChangeListener;
 public class MancalaModel 
 {
 	private ArrayList<Pit> pits;   
-	private ArrayList<Pit> temppits;
-	private ArrayList<BigPit> tempbigpits;
-	private ArrayList<BigPit> bigpits;  // 0  is player 1    1 is player 2
+	private ArrayList<Pit> tempPits;
+	private ArrayList<BigPit> tempBigPits;
+	private ArrayList<BigPit> bigPits;  // 0  is player 1    1 is player 2
 	private Borad style;
 	private ArrayList<ChangeListener> listeners;
 	private int curPlayer; //variable to keep track of current player, see constructor for value meanings
@@ -21,7 +21,7 @@ public class MancalaModel
 	{
 		this.curPlayer = 1; // 1 for player 1, -1 for player 2
 		pits = new ArrayList<Pit>();
-		bigpits = new ArrayList<BigPit>();
+		bigPits = new ArrayList<BigPit>();
 		listeners = new ArrayList<ChangeListener>();	
 		undo = 3;
 	}
@@ -42,11 +42,11 @@ public class MancalaModel
 	}
 	public void addBigPit(BigPit bp)
 	{
-		bigpits.add(bp);
+		bigPits.add(bp);
 	}
 	public int getPlayerPitStones(int i)
 	{
-		return bigpits.get(i).getstones();
+		return bigPits.get(i).getstones();
 	}
 	public int Undo()
 	{
@@ -90,8 +90,8 @@ public class MancalaModel
 	}
 	public void undocalled()
 	{
-		pits = temppits;
-		bigpits = tempbigpits;
+		pits = tempPits;
+		bigPits = tempBigPits;
 	}
 	
 	public void playerMove(int selectedPit)
@@ -119,6 +119,34 @@ public class MancalaModel
 		{
 	 
 		} */
+		
+		tempPits = pits;
+		tempBigPits = bigPits;
+		
+		if(this.curPlayer == 1)
+		{
+			if(selectedPit >= 0 && selectedPit <= 5)
+			{
+				
+			}
+			else if(selectedPit >= 6 && selectedPit <= 11)
+			{
+				
+			}
+		}
+		else if(this.curPlayer == -1)
+		{
+			if(selectedPit >= 0 && selectedPit <= 5)
+			{
+				
+			}
+			else if(selectedPit >= 6 && selectedPit <= 11)
+			{
+				
+			}
+		}
+		
+		
 		this.curPlayer = (this.curPlayer * -1); // alternate current player each time to negative and nonnegative num
 		
 		for (ChangeListener l : this.listeners) { // notify listeners (view)

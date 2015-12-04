@@ -19,9 +19,13 @@ public class BigPit implements Icon
 		this.stones = stones;
 		this.player = Player;
 	}
+	/*
+	 * @return true if player 1
+	 * integer is either 1 or -1
+	 */
 	public boolean player1()
 	{
-		return player == 0;
+		return player == 1;
 	}
 	public void addStones(int stones)
 	{

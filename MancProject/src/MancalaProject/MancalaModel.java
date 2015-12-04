@@ -5,7 +5,13 @@ import java.util.ArrayList;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
+/**
+ * 
+ * @author John Anderson
+ * @author 
+ * @author
+ *
+ */
 public class MancalaModel 
 {
 	private ArrayList<Pit> pits;   

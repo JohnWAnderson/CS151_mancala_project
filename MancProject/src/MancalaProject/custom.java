@@ -12,9 +12,18 @@ import java.util.Random;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+/**
+ *  interface that draws the pis in a custom color and in a retangle shape.
+ * @author John Anderson
+ * @author 
+ * @author
+ *
+ */
 public class custom implements Borad
 {
+	/**
+	 * draws the bigpits or mancala pits
+	 */
 	@Override
 	public void drawbigpits(Graphics2D g2, int x, int y, int stones, int size)  {
 		Rectangle2D.Double pit = new Rectangle2D.Double(0, 0, size/2 -5, size - 5);
@@ -30,7 +39,9 @@ public class custom implements Borad
 		g2.setColor(Color.BLACK);
 		g2.drawString(temp, x+10, y+12);
 	}
-
+	/**
+	 * draws the little pits
+	 */
 	@Override
 	public void drawpits(Graphics2D g2, int x, int y, int stones, int size) {
 		Rectangle2D.Double pit = new Rectangle2D.Double(0, 0, size, size);
@@ -46,7 +57,10 @@ public class custom implements Borad
 		g2.setColor(Color.BLACK);
 		g2.drawString(temp, x+5, y);
 	}
-
+	/**
+	 * helps pick a random spot in the small pits
+	 * @return temp  the number of a spot
+	 */
 	@Override
 	public int stonespot() 
 	{
@@ -54,7 +68,10 @@ public class custom implements Borad
 		int temp = random.nextInt(((50-25) +1) +0);
 		return temp;
 	}
-
+	/**
+	 * returns a number of a spot for the bigpit
+	 * @return temp the number of a spot for big pit
+	 */
 	@Override
 	public int bigstonesspot() {
 		Random random = new Random();

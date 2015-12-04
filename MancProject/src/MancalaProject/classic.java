@@ -13,7 +13,13 @@ import java.util.Random;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+/**
+ * 
+ * @author John Anderson
+ * @author 
+ * @author
+ *
+ */
 public class classic implements Borad
 {
 	@Override

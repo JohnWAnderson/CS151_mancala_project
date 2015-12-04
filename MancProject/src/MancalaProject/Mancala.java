@@ -9,7 +9,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
+/**
+ * 
+ * @author John Anderson
+ * @author 
+ * @author
+ *
+ */
 public class Mancala implements ChangeListener
 {	
 	private final String[] SETUP_2 = { "3 Stones", "4 Stones" };
@@ -19,7 +25,11 @@ public class Mancala implements ChangeListener
 	private JPanel output;
 	private JPanel center;
 	public JFrame frame;
-	//public static Borad style;
+	/**
+	 * creats the mancala
+	 * @param style   the board style
+	 * @param dataModel  the model
+	 */
 	public Mancala(Borad style, MancalaModel dataModel) // dataModel passed
 	{
 		model = dataModel; //new MancalaModel(); old code
@@ -35,6 +45,9 @@ public class Mancala implements ChangeListener
 		model.attach(this);
 		start();
 	}
+	/**
+	 * refreshes the borad
+	 */
 	public void refresh()
 	{
 		center.setVisible(false);
@@ -53,6 +66,9 @@ public class Mancala implements ChangeListener
 		frame.setResizable(false);
 		frame.setVisible(true);
 	}
+	/**
+	 * starts the board
+	 */
 	public void start()
 	{	
 		output = new JPanel(new BorderLayout());
@@ -87,6 +103,9 @@ public class Mancala implements ChangeListener
 			model.setStones(4);
 		//model.update();
 	}
+	/**
+	 * when there is a statechange the refresh is called
+	 */
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		refresh();

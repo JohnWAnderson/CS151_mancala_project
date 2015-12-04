@@ -94,7 +94,7 @@ public class MancalaModel
 		bigPits = tempBigPits;
 	}
 	
-	public void playerMove(int selectedPit)
+	public void playerMove(int thePit)
 	{
 		/* It looks like this method checks if access to bigPits are allowed, but it doesn't check which big pit to access
 		 *  It has to know which big pit to  skip
@@ -122,7 +122,11 @@ public class MancalaModel
 		
 		tempPits = pits;
 		tempBigPits = bigPits;
-		
+		int selectedPit = thePit;
+		int total = getStonesPit(selectedPit);
+		int numPitsToAccess;
+		int destinationPit;
+		boolean isEmpty;
 		if(this.curPlayer == 1)
 		{
 			if(selectedPit >= 0 && selectedPit <= 5)
@@ -138,11 +142,33 @@ public class MancalaModel
 		{
 			if(selectedPit >= 0 && selectedPit <= 5)
 			{
-				
+				pits.get(index).isEmpty();
 			}
-			else if(selectedPit >= 6 && selectedPit <= 11)
+			else if(selectedPit >= 6 && selectedPit <= 11) // Checks if selected Pit is on player B's (-1) side
 			{
-				
+				numPitsToAccess = selectedPit + total;
+				pits.get(selectedPit).Clear();
+				if(numPitsToAccess > 11)
+				{
+					while(total > 0)
+					{
+						pits.get(selectedPit).addStones(1);
+						total--;
+						selectedPit++;
+					}
+					/*
+					for(int p = 1; p <= total; p++)
+					{
+						int temp = p + selectedPit;
+						pits.get(p + selectedPit)
+					}
+					*/
+					bigPits.get(1).addStones(1);
+				}
+				else
+				{
+					
+				}
 			}
 		}
 		
@@ -152,6 +178,12 @@ public class MancalaModel
 		for (ChangeListener l : this.listeners) { // notify listeners (view)
 			l.stateChanged(new ChangeEvent(this));
 		}
+	}
+	
+	public static int reachPit(int selectedPit)
+	{
+		return selectedPit;
+		
 	}
 	
 	public void attach(ChangeListener listener) {

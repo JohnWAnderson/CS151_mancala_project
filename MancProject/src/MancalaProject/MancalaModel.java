@@ -153,12 +153,23 @@ public class MancalaModel
 				numPitsToAccess = selectedPit + total;
 				if(numPitsToAccess > 11)
 				{
+					int leftOvers;
 					while(total > 0)
 					{
-						pits.get(selectedPit+1).addStones(1);
-						total--;
-						selectedPit++;
+						int nextPit = pits.indexOf(selectedPit+1);
+						if(nextPit <= 11)
+						{
+							pits.get(selectedPit+1).addStones(1);
+							total--;
+							selectedPit++;
+						}
+						else
+						{
+							total--; // add stone into BigPit
+							selectedPit = 5;
+						}
 					}
+					
 					/*
 					for(int p = 1; p <= total; p++)
 					{

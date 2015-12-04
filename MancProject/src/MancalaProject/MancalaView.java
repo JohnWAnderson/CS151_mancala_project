@@ -17,6 +17,13 @@ import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+ * 
+ * @author John Anderson
+ * @author 
+ * @author
+ *
+ */
 public class MancalaView
 {
 	public JPanel centerPits;

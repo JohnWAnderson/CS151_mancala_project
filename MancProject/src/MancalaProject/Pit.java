@@ -11,6 +11,13 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
+/**
+ * 
+ * @author John Anderson
+ * @author 
+ * @author
+ *
+ */
 public class Pit implements Icon, MouseListener
 {
 	private int size;
@@ -73,8 +80,8 @@ public class Pit implements Icon, MouseListener
 			{
 				this.model.clearPit(this.getId()); 
 			}
-			System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
 			this.model.playerMove(this.getId());
+			System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
 		}
 		@Override
 	public void mouseEntered(MouseEvent arg0) {

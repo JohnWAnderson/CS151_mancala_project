@@ -5,13 +5,28 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.Icon;
-
+/**
+ * This class is the class that is the icons for the bigpit
+ * It holds the player and the amount of stoens.
+ * It gets the size needed and also the style that the user inputs using onf of the board types
+ * @author John Anderson
+ * @author 
+ * @author
+ *
+ */
 public class BigPit implements Icon
 {
 	private int player;
 	private Borad style;
 	private int size;
 	private int stones;
+	/**
+	 * makes the big pit form the input
+	 * @param size size of the pit
+	 * @param style the style that will be used for the pit
+	 * @param stones the amount of stones in the pit
+	 * @param Player what player pit is controled
+	 */
 	public BigPit(int size , Borad style, int stones, int Player)
 	{
 		this.size = size;
@@ -19,31 +34,49 @@ public class BigPit implements Icon
 		this.stones = stones;
 		this.player = Player;
 	}
-	/*
-	 * @return true if player 1
-	 * integer is either 1 or -1
+	/**
+	 *  checks to see if player 1's turn
+	 * @return true||false  true if player 1's turn else false
 	 */
 	public boolean player1()
 	{
 		return player == 1;
 	}
+	/**
+	 * adds more stones into the bigpit
+	 * @param stones the amount of stones to add into the pit
+	 */
 	public void addStones(int stones)
 	{
 		this.stones += stones;
 	}
+	/**
+	 * returns the amount of stones in the pit currently
+	 * @return stones  the amount of stones in the pit
+	 */
 	public int getstones()
 	{
 		return stones;
 	}
+	/**
+	 *  returns the pits height
+	 * @return size the height of the bigpit
+	 */
 	@Override
 	public int getIconHeight() {
 		return size;
 	}
-
+	/**
+	 * returns the width of the bigpit
+	 * @return size/2 the width of the bigpit
+	 */
 	@Override
 	public int getIconWidth() {
 		return size/2;
 	}
+	/**
+	 * draws the pit according the the style requested by user and uses the stratagy borad to draw
+	 */
 	@Override
 	public void paintIcon(Component c, Graphics g, int x, int y) {
 		Graphics2D g2 = (Graphics2D)g;

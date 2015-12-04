@@ -2,7 +2,13 @@ package MancalaProject;
 
 import javax.swing.JOptionPane;
 
-
+/**
+ * 
+ * @author John Anderson
+ * @author 
+ * @author
+ *
+ */
 public class MancalaTester
 {
 	private final static String[] SETUP = { "Clasic", "Custom" };

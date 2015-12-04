@@ -213,14 +213,16 @@ public class MancalaView
 			whoeseTurn = new JLabel("Player 2 turn: ");
 			System.out.println("Player 2");
 		}
-		
-		if(model.checkUndo() == true && model.Undo() != 3)
+		if(model.Undo() < 3)
 		{
-			undoTurn = new JLabel("You have " + model.Undo() + "/3 undo's left");
-		}
-		else if(model.Undo() ==0)
-		{
-			undoTurn = new JLabel("You have no more undos");
+			if(model.checkUndo() == true)
+			{
+				undoTurn = new JLabel("You have " + model.Undo() + "/3 undo's left");
+			}
+			else if(model.Undo() ==0)
+			{
+				undoTurn = new JLabel("You have no more undos");
+			}
 		}
 		/**if()
 		{
@@ -232,6 +234,8 @@ public class MancalaView
 	        public void actionPerformed(ActionEvent e)
 	        {
 	        	model.undocalled();
+	        	model.undoplayer();
+	        	// works, just needs to get the call to change the model and it will be cahnged and refreshed.
 	        	System.out.println("undo called");
 	        }
 	     });

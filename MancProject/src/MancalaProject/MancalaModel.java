@@ -46,6 +46,10 @@ public class MancalaModel
 	{
 		this.undo = 3;
 	}
+	public void undoplayer()
+	{
+		curPlayer *= -1;
+	}
 	public void addBigPit(BigPit bp)
 	{
 		bigPits.add(bp);

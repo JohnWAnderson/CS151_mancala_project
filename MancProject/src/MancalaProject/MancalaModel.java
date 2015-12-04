@@ -21,9 +21,14 @@ public class MancalaModel
 		pits = new ArrayList<Pit>();
 		bigpits = new ArrayList<BigPit>();
 		listeners = new ArrayList<ChangeListener>();	
+		undo = 3;
 	}
 	public int getPlayer() {
 		return this.curPlayer;
+	}
+	public boolean player1Turn()
+	{
+		return this.curPlayer == 1;
 	}
 	public int pitsSize()
 	{

@@ -174,7 +174,7 @@ public class MancalaView
 		JLabel whoeseTurn = new JLabel();
 		JLabel undoTurn = new JLabel();
 		JLabel Won = new JLabel();
-		if(model.getPlayer() == 1)
+		if(model.player1Turn() == true)
 		{
 			whoeseTurn = new JLabel("Player 1 turn: ");
 		}

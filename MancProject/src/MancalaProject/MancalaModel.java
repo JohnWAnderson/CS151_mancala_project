@@ -92,6 +92,7 @@ public class MancalaModel
 	{
 		tempPits = pits;
 		tempBigPits = bigPits;
+		
 	}
 	public void undocalled()
 	{

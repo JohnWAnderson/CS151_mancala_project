@@ -146,13 +146,13 @@ public class MancalaModel
 			}
 			else if(selectedPit >= 6 && selectedPit <= 11) // Checks if selected Pit is on player B's (-1) side
 			{
+				// selectedPit is cleared in mouseListener;
 				numPitsToAccess = selectedPit + total;
-				pits.get(selectedPit).Clear();
 				if(numPitsToAccess > 11)
 				{
 					while(total > 0)
 					{
-						pits.get(selectedPit).addStones(1);
+						pits.get(selectedPit+1).addStones(1);
 						total--;
 						selectedPit++;
 					}

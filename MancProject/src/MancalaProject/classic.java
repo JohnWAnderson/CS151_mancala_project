@@ -19,7 +19,8 @@ public class classic implements Borad
 	@Override
 	public void drawbigpits(Graphics2D g2, int x, int y, int stones, int size) {
 		 Ellipse2D.Double pit = new Ellipse2D.Double(x,y,size/2,size);
-		 g2.draw(pit);
+		 g2.setColor(Color.BLACK);
+		 g2.fill(pit);
 			for(int i = 0; i < stones; i ++)
 			 {
 				Ellipse2D.Double temp = new Ellipse2D.Double(bigstonesspot()+15, bigstonesspot()+60, 15, 15);
@@ -34,7 +35,8 @@ public class classic implements Borad
 	@Override
 	public void drawpits(Graphics2D g2, int x, int y, int stones, int size) {
 		 Ellipse2D.Double pit = new Ellipse2D.Double(x,y,size,size);
-		 g2.draw(pit);
+		 g2.setColor(Color.BLACK);
+		 g2.fill(pit);
 		for(int i = 0; i < stones; i ++)
 		 {
 			 Ellipse2D.Double temp = new Ellipse2D.Double(stonespot()+25, stonespot()+30, 15, 15);

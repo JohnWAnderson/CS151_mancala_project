@@ -1,6 +1,7 @@
 package MancalaProject;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -31,6 +32,7 @@ public class MancalaView
 		centerPits = new JPanel();
         GridLayout gridLayout = new GridLayout(2,6);
         centerPits.setLayout(gridLayout);
+        centerPits.setBackground(Color.LIGHT_GRAY);
         for(int i = 0; i < 12; i++)
         {	
         	Pit temp = new Pit(80,model.getStyle(), 0, i, model);
@@ -53,13 +55,13 @@ public class MancalaView
 		centerPits = new JPanel();
 		 GridLayout gridLayout = new GridLayout(2,6);
 	        centerPits.setLayout(gridLayout);
+	        centerPits.setBackground(Color.LIGHT_GRAY);
 	        for(int i = 0; i < model.pitsSize(); i++) // this needed to be restricted to the current size of pit ArrayList
 	        {	
 	        	Pit temp = new Pit(80,model.getStyle(), model.getStonesPit(i), i, model);    // model.getStonesPit(i)    this is what should be were 3 is
 	        	
 	        	JLabel pit = new JLabel(temp);
 	        	pit.addMouseListener(temp); // add Mouse listener to each pit object passing pit to it
-	        	
 	        	centerPits.add(pit);
 	        }
 		return centerPits;
@@ -67,6 +69,7 @@ public class MancalaView
 	public JPanel toplabel()
 	{
         JPanel botPanel = new JPanel();
+        botPanel.setBackground(Color.LIGHT_GRAY);
 		 for(int i =1; i < 7; i++)
          { 
                  JLabel tempA = new JLabel("           " + "A" + i + "            ");
@@ -78,6 +81,7 @@ public class MancalaView
 	public JPanel botlabel()
 	{
         JPanel topPanel = new JPanel();
+		topPanel.setBackground(Color.LIGHT_GRAY);
 		 for(int i =1; i < 7; i++)
          {
                  JLabel tempB = new JLabel( "           " + "B" + (7 - i) + "            ");
@@ -97,9 +101,11 @@ public class MancalaView
 			temp = 1; // to make 2'd spot in arraylist
 		}
 		JPanel big = new JPanel();
+		big.setBackground(Color.LIGHT_GRAY);
 		BigPit bigpit = new BigPit(190, model.getStyle(), 0, player); 
 		model.addBigPit(bigpit);
 		JLabel label = new JLabel(bigpit);
+		
 		big.add(label);
 		return big;
 	}
@@ -115,6 +121,7 @@ public class MancalaView
 			temp = 1; // to make 2'd spot in arraylist
 		}
 		JPanel big = new JPanel();
+		big.setBackground(Color.LIGHT_GRAY);
 		BigPit bigpit = new BigPit(190, model.getStyle(), model.getPlayerPitStones(temp), player); 
 		JLabel label = new JLabel(bigpit);
 		big.add(label);
@@ -132,7 +139,13 @@ public class MancalaView
 		JLabel A2 = new JLabel("A");
 		JLabel space = new JLabel(" ");
 		JLabel label = new JLabel("A");
+		JLabel topspace = new JLabel(" ");
+		JLabel topspace2 = new JLabel(" ");
+		JLabel topspace3 = new JLabel(" "); 
 		leftLabel.setLayout(new BoxLayout(leftLabel, BoxLayout.Y_AXIS));
+		leftLabel.add(topspace);
+		leftLabel.add(topspace2);
+		leftLabel.add(topspace3);
 		leftLabel.add(M);
 		leftLabel.add(A);
 		leftLabel.add(N);
@@ -142,6 +155,7 @@ public class MancalaView
 		leftLabel.add(A2);
 		leftLabel.add(space);
 		leftLabel.add(label);
+		leftLabel.setBackground(Color.LIGHT_GRAY);
 		return leftLabel;
 	}
 	public JPanel ManB()
@@ -156,7 +170,13 @@ public class MancalaView
 		JLabel A2 = new JLabel("A");
 		JLabel space = new JLabel(" ");
 		JLabel label = new JLabel("B");
+		JLabel topspace = new JLabel(" ");
+		JLabel topspace2 = new JLabel(" ");
+		JLabel topspace3 = new JLabel(" "); 
 		leftLabel.setLayout(new BoxLayout(leftLabel, BoxLayout.Y_AXIS));
+		leftLabel.add(topspace);
+		leftLabel.add(topspace2);
+		leftLabel.add(topspace3);
 		leftLabel.add(M);
 		leftLabel.add(A);
 		leftLabel.add(N);
@@ -166,6 +186,7 @@ public class MancalaView
 		leftLabel.add(A2);
 		leftLabel.add(space);
 		leftLabel.add(label);
+		leftLabel.setBackground(Color.LIGHT_GRAY);
 		return leftLabel;
 	}
 	public JPanel playersTurn()

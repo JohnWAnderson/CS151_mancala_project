@@ -206,10 +206,12 @@ public class MancalaView
 		if(model.player1Turn() == true)
 		{
 			whoeseTurn = new JLabel("Player 1 turn: ");
+			System.out.println("Player 1");
 		}
 		else
 		{
 			whoeseTurn = new JLabel("Player 2 turn: ");
+			System.out.println("Player 2");
 		}
 		
 		if(model.checkUndo() == true && model.Undo() != 3)

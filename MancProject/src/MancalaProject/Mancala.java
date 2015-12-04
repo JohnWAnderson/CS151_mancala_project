@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
@@ -61,8 +62,7 @@ public class Mancala implements ChangeListener
 		center.add(view.botlabel(), BorderLayout.SOUTH);	// bot label
 		output.add(center, BorderLayout.CENTER);
 		output.add(view.playersTurn(), BorderLayout.SOUTH);
-		frame.add(center, BorderLayout.CENTER);
-		frame.add(view.playersTurn(), BorderLayout.SOUTH);
+		frame.add(output, BorderLayout.CENTER);
 		frame.setResizable(false);
 		frame.setVisible(true);
 	}

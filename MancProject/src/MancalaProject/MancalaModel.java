@@ -43,7 +43,7 @@ public class MancalaModel
 	}
 	public int Undo()
 	{
-		this.undo -= 1;
+		this.undo *= -1;
 		return this.undo;
 	}
 	public boolean checkUndo()

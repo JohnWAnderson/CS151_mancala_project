@@ -3,6 +3,8 @@ package MancalaProject;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -194,7 +196,13 @@ public class MancalaView
 			check win condtion then man label for winning player number
 		}*/
 		JButton undo = new JButton("UNDO");
-		
+		undo.addActionListener(new ActionListener()
+	     {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	// needs to call the revert method	
+	        }
+	     });
 		turn.setLayout(new BorderLayout());
 		JPanel temp = new JPanel();
 		temp.add(whoeseTurn,  BorderLayout.WEST);

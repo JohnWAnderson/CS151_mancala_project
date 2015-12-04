@@ -160,6 +160,11 @@ public class MancalaModel
 							total--;
 							selectedPit++;
 						}
+						else
+						{
+							total--; // add stone into BigPit
+							selectedPit = 5;
+						}
 					}
 					
 					/*

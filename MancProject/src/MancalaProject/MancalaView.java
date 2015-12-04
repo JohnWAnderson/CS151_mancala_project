@@ -83,6 +83,24 @@ public class MancalaView
          }
 		 return topPanel;
 	}
+	public JPanel StartBigPit(int player)
+	{
+		int temp;
+		if(player == 1)
+		{
+			temp = 0; // to make 1'st spot in arraylist 
+		}
+		else
+		{
+			temp = 1; // to make 2'd spot in arraylist
+		}
+		JPanel big = new JPanel();
+		BigPit bigpit = new BigPit(190, model.getStyle(), 0, player); 
+		model.addBigPit(bigpit);
+		JLabel label = new JLabel(bigpit);
+		big.add(label);
+		return big;
+	}
 	public JPanel BigPit(int player)
 	{
 		int temp;

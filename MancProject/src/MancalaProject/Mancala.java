@@ -60,8 +60,8 @@ public class Mancala implements ChangeListener
 		frame.setLayout(new BorderLayout());
 		center = new JPanel();
 		center.setLayout(new BorderLayout());
-		center.add(view.BigPit(1), BorderLayout.WEST);  // big pit
-		center.add(view.BigPit(-1), BorderLayout.EAST);	// big pit
+		center.add(view.StartBigPit(1), BorderLayout.WEST);  // big pit
+		center.add(view.StartBigPit(-1), BorderLayout.EAST);	// big pit
 		center.add(view.StartMiddlePits(), BorderLayout.CENTER);	// pits
 		center.add(view.toplabel(), BorderLayout.NORTH);	// top label
 		center.add(view.botlabel(), BorderLayout.SOUTH);	// bot label
@@ -88,7 +88,6 @@ public class Mancala implements ChangeListener
 	}
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		//this.view.MiddlePitsUpdate();
 		refresh();
 	}
 }   

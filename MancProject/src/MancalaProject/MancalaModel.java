@@ -33,6 +33,10 @@ public class MancalaModel
 	{
 		this.undo = 3;
 	}
+	public void addBigPit(BigPit bp)
+	{
+		bigpits.add(bp);
+	}
 	public int getPlayerPitStones(int i)
 	{
 		return bigpits.get(i).getstones();

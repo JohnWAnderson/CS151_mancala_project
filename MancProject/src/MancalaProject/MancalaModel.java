@@ -98,6 +98,7 @@ public class MancalaModel
 	}
 	public void undoCalled()
 	{
+		undo--;
 		pits = new ArrayList<Pit>();
 		for (Pit p : tempPits) {
 			pits.add(p.clone());
@@ -199,6 +200,7 @@ public class MancalaModel
 					circle.get(selectedPit).addStones(1);
 				}
 			}
+		this.setUndo();
 		this.curPlayer = (this.curPlayer * -1); // alternate current player each time to negative and nonnegative num
 		for (ChangeListener l : this.listeners) { // notify listeners (view)
 			l.stateChanged(new ChangeEvent(this));

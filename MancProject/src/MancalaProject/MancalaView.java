@@ -233,7 +233,11 @@ public class MancalaView
 	     {
 	        public void actionPerformed(ActionEvent e)
 	        {
+	        	if (model.checkUndo()){
 	        	model.undoCalled();
+	        	} else {
+	        		System.out.println("Invalid move, no more undo calls allowed.");
+	        	}
 	        	// works, just needs to get the call to change the model and it will be cahnged and refreshed.
 	        	System.out.println("undo called");
 	        }

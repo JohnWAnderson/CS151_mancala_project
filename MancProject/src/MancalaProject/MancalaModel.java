@@ -57,7 +57,7 @@ public class MancalaModel
 	}
 	public int getPlayerPitStones(int i)
 	{
-		return bigPits.get(i).getstones();
+		return bigPits.get(i).getstones(); 
 	}
 	public int Undo()
 	{

@@ -87,14 +87,17 @@ public class Pit implements Icon, MouseListener
 			//model.saveUndo();
 			if(this.getId() <= 5 && model.player1Turn() == true)
 			{
-				//this.model.clearPit(this.getId());  
-				this.model.playerMove(this.getId());
+				int tempStones = this.model.getStonesPit(this.getId());
+				this.model.clearPit(this.getId());  
+				this.model.playerMove(this.getId(), tempStones);
 			}
 			else if(this.getId() >= 6 && model.player1Turn() == false)
 			{
-				//this.model.clearPit(this.getId()); 
-				this.model.playerMove(this.getId());
+				int tempStones = this.model.getStonesPit(this.getId());
+				this.model.clearPit(this.getId()); 
+				this.model.playerMove(this.getId(), tempStones);
 			}
+			System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
 			System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
 		}
 		@Override

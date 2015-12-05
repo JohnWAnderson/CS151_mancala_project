@@ -94,7 +94,9 @@ public class MancalaModel
 		Pit temp = pits.get(i);
 		temp.Clear();
 	}
-	public void undoCalled()
+	public void undoCalled(){
+	}
+	public void undocalled()
 	{
 		pits = new ArrayList<Pit>();
 		for (Pit p : tempPits) {
@@ -138,88 +140,142 @@ public class MancalaModel
 			tempBigPits.add(b);
 		} */
 	}
-	public void playerMove(int thePit)
+	public void playerMove(int thePit, int theStones)
 	{
-		
 		tempPits = pits;
 		tempBigPits = bigPits;
 		int selectedPit = thePit;
-		int total = getStonesPit(selectedPit);
+		int total = theStones;
 		int pitToAccess = 0;
-		//int destinationPit;
-		boolean isEmpty;
+		int nextPit = 0;
 		if(this.curPlayer == 1)
 		{
-			if(selectedPit >= 0 && selectedPit <= 5)
+			if(selectedPit >=0 && selectedPit <= 5 )
 			{
-				
-			}
-			else if(selectedPit >= 6 && selectedPit <= 11)
-			{
-				
+				pitToAccess = selectedPit - total;
+				boolean isStoneAddedInBigPit = false;
+				if(pitToAccess < 0)
+				{
+					bigPits.get(0).addStones(1);
+					while(total > 0)
+					{
+						if(selectedPit <= 0 && selectedPit >= 5)
+							nextPit = pits.indexOf(selectedPit-1);
+						else
+							nextPit = 0;
+						
+						if(nextPit > 0 && !isStoneAddedInBigPit)
+						{
+							pits.get(selectedPit -1).addStones(1);
+							total--;
+							selectedPit--;
+						}
+						else if(nextPit == 0 && !isStoneAddedInBigPit)
+						{
+							isStoneAddedInBigPit = true;
+							total--;
+							selectedPit =5;
+						}
+						else if(isStoneAddedInBigPit)
+						{
+							pits.get(selectedPit).addStones(1);
+							total--;
+							selectedPit++;
+							if(selectedPit == 11 && total > 0)
+							{
+								isStoneAddedInBigPit = false;
+								pits.get(11).addStones(1);
+								total--;
+								selectedPit = 6;
+							}
+						}
+					}
+				}
+		
+	
+				else if(pitToAccess >= 0)
+				{
+					while(total > 0)
+					{
+						pits.get(selectedPit-1).addStones(1);
+						total--;
+						selectedPit--;
+					}
+				}
 			}
 		}
 		else if(this.curPlayer == -1)
 		{
-			if(selectedPit >= 0 && selectedPit <= 5)
-			{
-				//its.get(index).isEmpty();
-			}
-			else if(selectedPit >= 6 && selectedPit <= 11) // Checks if selected Pit is on player B's (-1) side
+			if(selectedPit >= 6 && selectedPit <= 11) // Checks if selected Pit is on player B's (-1) side
 			{
 				// selectedPit is cleared in mouseListener;
 				pitToAccess = selectedPit + total;
-				System.out.println("pitToAccess: " + pitToAccess);
+				//System.out.println("pitToAccess: " + pitToAccess);
 				boolean isStoneAddedInBigPit = false;
-				//bigPits.get(1).addStones(1);
 
 				if(pitToAccess > 11)
 				{
 					bigPits.get(1).addStones(1);
-					//int leftOvers;
-					
 					
 					while(total > 0)
 					{
-						int nextPit = pits.indexOf(selectedPit+1);
-						if(nextPit <= 11 && !isStoneAddedInBigPit)
+						if(selectedPit >= 6 && selectedPit <= 10)
+							nextPit = pits.indexOf(selectedPit+1);
+						else // else if(selectedPit == 11)
+						{
+							nextPit = 11;
+						}	
+						
+						if(nextPit < 11 && !isStoneAddedInBigPit)
 						{
 							pits.get(selectedPit+1).addStones(1);
 							total--;
 							selectedPit++;
 						}
-						else if(nextPit > 11 && !isStoneAddedInBigPit)
+						else if(nextPit == 11 && !isStoneAddedInBigPit)
 						{
 							isStoneAddedInBigPit = true;
 							total--; // add stone into BigPit
-							selectedPit = 6; // iterate selectedPit to pits index 5
+							selectedPit = 6; // iterate selectedPit to pits index 6
 						}
 						else if(isStoneAddedInBigPit)
 						{
 							pits.get(selectedPit-1).addStones(1);
 							total--;
 							selectedPit--;
+							if(selectedPit == 0 && total > 0)
+							{
+								isStoneAddedInBigPit = false;
+								pits.get(6).addStones(1);
+								total--;
+								selectedPit = 5;
+							}
 						}
 					}
 					// Check if selectedPit is Empty. If True, playerMove(selectedPit)
-					boolean isPitEmpty = pits.get(selectedPit).isEmpty();
+					//boolean isPitEmpty = pits.get(selectedPit).isEmpty();
 					
-					if(!isPitEmpty) { playerMove(selectedPit); }
+					//if(!isPitEmpty) { playerMove(selectedPit, this.getStonesPit(selectedPit)); }
 					
 				}
-				else
+				else if(pitToAccess <= 11)
 				{
-					
+					while(total > 0)
+					{
+						pits.get(selectedPit+1).addStones(1);
+						total--;
+						selectedPit++;
+					}
 				}
 			}
 		}
 		
 		
 		this.curPlayer = (this.curPlayer * -1); // alternate current player each time to negative and nonnegative num
+		
 		for (ChangeListener l : this.listeners) { // notify listeners (view)
 			l.stateChanged(new ChangeEvent(this));
 		}
-	
 	}
 	
 	public static int reachPit(int selectedPit)

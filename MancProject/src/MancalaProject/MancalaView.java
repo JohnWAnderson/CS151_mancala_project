@@ -202,6 +202,7 @@ public class MancalaView
 		JPanel turn = new JPanel();
 		JLabel whoeseTurn = new JLabel();
 		JLabel undoTurn = new JLabel();
+		JLabel retake = new JLabel();
 		JLabel Won = new JLabel();
 		if(model.player2Turn() == true)
 		{
@@ -228,6 +229,14 @@ public class MancalaView
 		{
 			undoTurn = new JLabel(model.whoWon());
 		}
+		if(model.retaketurn() == true)
+		{
+			retake = new JLabel("*You have won another turn*");
+		}
+		else
+		{
+			retake = new JLabel("");
+		}
 		/**if()
 		{
 			check win condtion then man label for winning player number
@@ -250,6 +259,7 @@ public class MancalaView
 		JPanel temp = new JPanel();
 		temp.add(whoeseTurn,  BorderLayout.WEST);
 		temp.add(undoTurn);
+		temp.add(retake);
 		turn.add(temp, BorderLayout.WEST);
 		turn.add(Won, BorderLayout.CENTER);
 		turn.add(undo,  BorderLayout.EAST);

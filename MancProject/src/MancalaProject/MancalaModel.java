@@ -262,10 +262,18 @@ public class MancalaModel
 								circle.get(selectedPit).addStones(1);
 								totalStones--;
 							}
+							else
+								retaketurn = true;
 						}
 						else if(selectedPit == 12  && this.curPlayer == -1){
 							bigPits.get(1).addStones(1);
-							selectedPit= -1;}
+							if(totalStones > 0)
+							{
+								selectedPit = -1;
+							}
+							else
+								retaketurn = true;
+						}
 						else if(selectedPit ==12)
 							selectedPit = -1;
 						else

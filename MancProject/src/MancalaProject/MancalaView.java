@@ -80,7 +80,7 @@ public class MancalaView
         botPanel.setBackground(Color.LIGHT_GRAY);
 		 for(int i =1; i < 7; i++)
          { 
-                 JLabel tempA = new JLabel("           " + "A" + i + "            ");
+                 JLabel tempA = new JLabel("           " + "A" + (7-i) + "            ");
                  botPanel.add(tempA);
          }
 		 return botPanel;
@@ -92,7 +92,7 @@ public class MancalaView
 		topPanel.setBackground(Color.LIGHT_GRAY);
 		 for(int i =1; i < 7; i++)
          {
-                 JLabel tempB = new JLabel( "           " + "B" + (7 - i) + "            ");
+                 JLabel tempB = new JLabel( "           " + "B" + (i) + "            ");
                  topPanel.add(tempB);  
          }
 		 return topPanel;

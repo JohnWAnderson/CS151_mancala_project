@@ -153,8 +153,7 @@ public class MancalaModel
 					}
 				}
 		
-				
-				
+	
 				else if(pitToAccess >= 0)
 				{
 					while(total > 0)

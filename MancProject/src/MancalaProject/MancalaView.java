@@ -213,16 +213,20 @@ public class MancalaView
 			whoeseTurn = new JLabel("Player 2 turn: ");
 			System.out.println("Player 2");
 		}
-		if(model.Undo() < 3)
+		if(model.gameEnded() == false){
+			
+				if(model.checkUndo() == true)
+				{
+					undoTurn = new JLabel("You have " + model.Undo() + "/3 undo's left");
+				}
+				else if(model.Undo() ==0)
+				{
+					undoTurn = new JLabel("You have no more undos");
+				}
+		}
+		else
 		{
-			if(model.checkUndo() == true)
-			{
-				undoTurn = new JLabel("You have " + model.Undo() + "/3 undo's left");
-			}
-			else if(model.Undo() ==0)
-			{
-				undoTurn = new JLabel("You have no more undos");
-			}
+			undoTurn = new JLabel(model.whoWon());
 		}
 		/**if()
 		{

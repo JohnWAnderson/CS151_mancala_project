@@ -198,23 +198,26 @@ public class MancalaModel
 		}
 		while(totalStones != 0) 
 			{
-				totalStones--;
-				selectedPit++;
-				if(selectedPit == 6){
-					if(this.curPlayer == 1)
-						bigPits.get(0).addStones(1);
-					circle.get(selectedPit).addStones(1);
-					}
-				else if(selectedPit == 12  && this.curPlayer == -1){
-					bigPits.get(1).addStones(1);
-					selectedPit= -1;}
-				else if(selectedPit ==12)
+				if(totalStones == 1)
 				{
-					selectedPit = -1;
+					
 				}
 				else
 				{
-					circle.get(selectedPit).addStones(1);
+				totalStones--;
+				selectedPit++;
+					if(selectedPit == 6){
+						if(this.curPlayer == 1)
+							bigPits.get(0).addStones(1);
+							circle.get(selectedPit).addStones(1);
+						}
+						else if(selectedPit == 12  && this.curPlayer == -1){
+							bigPits.get(1).addStones(1);
+							selectedPit= -1;}
+						else if(selectedPit ==12)
+							selectedPit = -1;
+						else
+							circle.get(selectedPit).addStones(1);	
 				}
 			}
 		this.curPlayer = (this.curPlayer * -1); // alternate current player each time to negative and nonnegative num
@@ -263,6 +266,18 @@ public class MancalaModel
 		else
 			winner = "THE GAME IS A TIE";
 		return winner;
+	}
+	public String whoWon()
+	{
+		String temp = "";
+		if(bigPits.get(0).getstones() > bigPits.get(1).getstones())
+			temp = "Player 1 Won the game";
+		else if(bigPits.get(0).getstones() < bigPits.get(1).getstones())
+			temp = "Player 2 Won the game";
+		else
+			temp = "The game it tied";
+		
+		return temp;
 	}
 	public void checkWin() {
 		int count = 0;

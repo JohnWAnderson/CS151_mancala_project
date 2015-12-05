@@ -154,7 +154,7 @@ public class MancalaModel
 								isStoneAddedInBigPit = false;
 								pits.get(11).addStones(1);
 								total--;
-								selectedPit = 5;
+								selectedPit = 6;
 							}
 						}
 					}
@@ -184,7 +184,6 @@ public class MancalaModel
 				if(pitToAccess > 11)
 				{
 					bigPits.get(1).addStones(1);
-					
 					
 					while(total > 0)
 					{
@@ -217,7 +216,7 @@ public class MancalaModel
 								isStoneAddedInBigPit = false;
 								pits.get(6).addStones(1);
 								total--;
-								selectedPit = 6;
+								selectedPit = 5;
 							}
 						}
 					}

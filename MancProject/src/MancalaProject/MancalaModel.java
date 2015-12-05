@@ -149,6 +149,13 @@ public class MancalaModel
 							pits.get(selectedPit).addStones(1);
 							total--;
 							selectedPit++;
+							if(selectedPit == 11 && total > 0)
+							{
+								isStoneAddedInBigPit = false;
+								pits.get(11).addStones(1);
+								total--;
+								selectedPit = 5;
+							}
 						}
 					}
 				}
@@ -205,6 +212,13 @@ public class MancalaModel
 							pits.get(selectedPit-1).addStones(1);
 							total--;
 							selectedPit--;
+							if(selectedPit == 0 && total > 0)
+							{
+								isStoneAddedInBigPit = false;
+								pits.get(6).addStones(1);
+								total--;
+								selectedPit = 6;
+							}
 						}
 					}
 					// Check if selectedPit is Empty. If True, playerMove(selectedPit)

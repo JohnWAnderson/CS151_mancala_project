@@ -270,7 +270,7 @@ public class MancalaModel
 			}
 		}
 		
-		
+		pits.get(thePit).Clear();
 		this.curPlayer = (this.curPlayer * -1); // alternate current player each time to negative and nonnegative num
 		
 		for (ChangeListener l : this.listeners) { // notify listeners (view)

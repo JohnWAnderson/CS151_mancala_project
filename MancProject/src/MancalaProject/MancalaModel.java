@@ -235,6 +235,17 @@ public class MancalaModel
 	public boolean gameEnded() {
 		return gameOver;
 	}
+	public String winner()
+	{
+		String winner = "";
+		if(bigPits.get(0).getstones() > bigPits.get(1).getstones())
+			winner = "PLAYER 1 IS THE WINNER";
+		else if(bigPits.get(0).getstones() < bigPits.get(1).getstones())
+				winner = "PLAYER 2 IS THE WINNER";
+		else
+			winner = "THE GAME IS A TIE";
+		return winner;
+	}
 	public void checkWin() {
 		int count = 0;
 		for (int i = 0; i <=5; i++){

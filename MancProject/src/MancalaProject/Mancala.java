@@ -2,7 +2,10 @@ package MancalaProject;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -105,8 +108,32 @@ public class Mancala implements ChangeListener
 	/**
 	 * when there is a statechange the refresh is called
 	 */
+	public void checkEnd()
+	{
+		if(model.gameEnded() == true)
+		{
+			JFrame over = new JFrame();
+			over.setLayout(new BorderLayout());
+			over.setSize(new Dimension(400,100));
+			JLabel winner = new JLabel(model.winner());
+			JButton Exit = new JButton("EXIT");
+			Exit.addActionListener(new ActionListener()
+		     {
+		        public void actionPerformed(ActionEvent e)
+		        {
+		        	System.exit(0);
+		        }
+		     });
+			over.add(winner, BorderLayout.CENTER);
+			over.add(Exit, BorderLayout.EAST);
+			over.setVisible(true);
+			over.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		}
+	}
 	@Override
-	public void stateChanged(ChangeEvent e) {
+	public void stateChanged(ChangeEvent e) 
+	{
+		checkEnd();
 		refresh();
 	}
 }   

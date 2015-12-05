@@ -10,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.jws.WebParam.Mode;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -60,7 +61,7 @@ public class MancalaView
 	public JPanel MiddlePitsUpdate()
 	{
 		centerPits = new JPanel();
-		model.saveUndo();
+		//model.saveUndo();
 		 GridLayout gridLayout = new GridLayout(2,6);
 	        centerPits.setLayout(gridLayout);
 	        centerPits.setBackground(Color.LIGHT_GRAY);
@@ -233,8 +234,7 @@ public class MancalaView
 	     {
 	        public void actionPerformed(ActionEvent e)
 	        {
-	        	model.undocalled();
-	        	model.undoplayer();
+	        	model.undoCalled();
 	        	// works, just needs to get the call to change the model and it will be cahnged and refreshed.
 	        	System.out.println("undo called");
 	        }

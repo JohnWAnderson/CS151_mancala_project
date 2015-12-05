@@ -46,10 +46,6 @@ public class MancalaModel
 	{
 		this.undo = 3;
 	}
-	public void undoplayer()
-	{
-		curPlayer *= -1;
-	}
 	public void addBigPit(BigPit bp)
 	{
 		bigPits.add(bp);
@@ -98,18 +94,53 @@ public class MancalaModel
 		Pit temp = pits.get(i);
 		temp.Clear();
 	}
-	public void undocalled()
+	public void undoCalled()
 	{
-		pits = tempPits;
-		bigPits = tempBigPits;
+		pits = new ArrayList<Pit>();
+		for (Pit p : tempPits) {
+			pits.add(p.clone());
+		}
+		//tempPits.ensureCapacity(pits.size());
+		bigPits = new ArrayList<BigPit>();
+		for (BigPit bp : tempBigPits){
+			bigPits.add(bp.clone());
+		}
+		curPlayer = curPlayer * -1;
+		for(ChangeListener l : this.listeners) {
+			l.stateChanged(new ChangeEvent(this));
+		}
+		
 	}
+	
 	public void saveUndo()
 	{
-		tempPits = pits;
-		tempBigPits = bigPits;
+		tempPits = new ArrayList<Pit>();
+		for (Pit p : pits) {
+			tempPits.add(p.clone());
+		}
+		//tempPits.ensureCapacity(pits.size());
+		tempBigPits = new ArrayList<BigPit>();
+		for (BigPit bp : bigPits){
+			tempBigPits.add(bp.clone());
+		}
+		//tempBigPits.ensureCapacity(bigPits.size());
+		//tempPits.addAll(pits);
+		//tempBigPits.addAll(bigPits);
+		//System.arraycopy(pits, 0, tempPits, 0, pits.size()-1);
+		//System.arraycopy(bigPits, 0, tempBigPits, 0, bigPits.size()-1);
+		/*
+		tempPits = new ArrayList<Pit>();
+		tempBigPits = new ArrayList<BigPit>();
+		for (Pit p : pits) {
+			tempPits.add(p);
+		}
+		for(BigPit b : bigPits) {
+			tempBigPits.add(b);
+		} */
 	}
 	public void playerMove(int thePit)
 	{
+		
 		tempPits = pits;
 		tempBigPits = bigPits;
 		int selectedPit = thePit;
@@ -147,7 +178,7 @@ public class MancalaModel
 					bigPits.get(1).addStones(1);
 					//int leftOvers;
 					
-					/*
+					
 					while(total > 0)
 					{
 						int nextPit = pits.indexOf(selectedPit+1);
@@ -174,7 +205,7 @@ public class MancalaModel
 					boolean isPitEmpty = pits.get(selectedPit).isEmpty();
 					
 					if(!isPitEmpty) { playerMove(selectedPit); }
-					*/
+					
 				}
 				else
 				{

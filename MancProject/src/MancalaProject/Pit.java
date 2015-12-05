@@ -33,6 +33,19 @@ public class Pit implements Icon, MouseListener
 		this.model = mod;
 		this.pitId = id;
 	}
+	public  Pit() {
+		
+	}
+	public Pit clone() {
+		Pit p = new Pit();
+		p.size = size;
+		p.style = style;
+		p.stones = stones;
+		p.model = model;
+		p.pitId = pitId;
+		return p;
+		
+	}
 	public int getId()
 	{
 		return this.pitId;
@@ -71,15 +84,15 @@ public class Pit implements Icon, MouseListener
 		@Override
 		public void mouseClicked(MouseEvent arg0)
 		{
-			model.saveUndo();
+			//model.saveUndo();
 			if(this.getId() <= 5 && model.player1Turn() == true)
 			{
-				this.model.clearPit(this.getId());  
+				//this.model.clearPit(this.getId());  
 				this.model.playerMove(this.getId());
 			}
 			else if(this.getId() >= 6 && model.player1Turn() == false)
 			{
-				this.model.clearPit(this.getId()); 
+				//this.model.clearPit(this.getId()); 
 				this.model.playerMove(this.getId());
 			}
 			System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");

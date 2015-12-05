@@ -34,6 +34,17 @@ public class BigPit implements Icon
 		this.stones = stones;
 		this.player = Player;
 	}
+	public BigPit() {
+		
+	}
+	public BigPit clone() {
+		BigPit bp = new BigPit();
+		bp.player = player;
+		bp.style = style;
+		bp.size = size;
+		bp.stones = stones;
+		return bp;
+	}
 	/**
 	 *  checks to see if player 1's turn
 	 * @return true||false  true if player 1's turn else false

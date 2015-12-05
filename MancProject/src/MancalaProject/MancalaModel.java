@@ -140,9 +140,6 @@ public class MancalaModel
 	}
 	public void playerMove(int thePit, int theStones)
 	{
-		saveUndo();
-		//tempPits = pits;
-		//tempBigPits = bigPits;
 		int selectedPit = thePit;
 		int total = theStones;
 		int pitToAccess = 0;

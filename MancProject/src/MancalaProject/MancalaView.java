@@ -80,7 +80,7 @@ public class MancalaView
         botPanel.setBackground(Color.LIGHT_GRAY);
 		 for(int i =1; i < 7; i++)
          { 
-                 JLabel tempA = new JLabel("           " + "A" + (7-i) + "            ");
+                 JLabel tempA = new JLabel("           " + "B" + (7-i) + "            ");
                  botPanel.add(tempA);
          }
 		 return botPanel;
@@ -92,7 +92,7 @@ public class MancalaView
 		topPanel.setBackground(Color.LIGHT_GRAY);
 		 for(int i =1; i < 7; i++)
          {
-                 JLabel tempB = new JLabel( "           " + "B" + (i) + "            ");
+                 JLabel tempB = new JLabel( "           " + "A" + (i) + "            ");
                  topPanel.add(tempB);  
          }
 		 return topPanel;
@@ -203,14 +203,14 @@ public class MancalaView
 		JLabel whoeseTurn = new JLabel();
 		JLabel undoTurn = new JLabel();
 		JLabel Won = new JLabel();
-		if(model.player1Turn() == true)
+		if(model.player2Turn() == true)
 		{
-			whoeseTurn = new JLabel("Player 1 turn: ");
+			whoeseTurn = new JLabel("Player 2 turn: ");
 			System.out.println("Player 1");
 		}
 		else
 		{
-			whoeseTurn = new JLabel("Player 2 turn: ");
+			whoeseTurn = new JLabel("Player 1 turn: ");
 			System.out.println("Player 2");
 		}
 		if(model.gameEnded() == false){

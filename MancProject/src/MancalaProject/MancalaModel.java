@@ -27,7 +27,7 @@ public class MancalaModel
 	
 	public MancalaModel()
 	{
-		this.curPlayer = 1; // 1 for player 1, -1 for player 2
+		this.curPlayer = -1; // 1 for player 1, -1 for player 2
 		pits = new ArrayList<Pit>();
 		bigPits = new ArrayList<BigPit>();
 		circle = new ArrayList<Pit>();
@@ -37,7 +37,7 @@ public class MancalaModel
 	public int getPlayer() {
 		return this.curPlayer;
 	}
-	public boolean player1Turn()
+	public boolean player2Turn()
 	{
 		return this.curPlayer == 1;
 	}
@@ -301,26 +301,15 @@ public class MancalaModel
 	public boolean gameEnded() {
 		return gameOver;
 	}
-	public String winner()
-	{
-		String winner = "";
-		if(bigPits.get(0).getstones() > bigPits.get(1).getstones())
-			winner = "PLAYER 1 IS THE WINNER";
-		else if(bigPits.get(0).getstones() < bigPits.get(1).getstones())
-				winner = "PLAYER 2 IS THE WINNER";
-		else
-			winner = "THE GAME IS A TIE";
-		return winner;
-	}
 	public String whoWon()
 	{
 		String temp = "";
 		if(bigPits.get(0).getstones() > bigPits.get(1).getstones())
-			temp = "Player 1 Won the game";
-		else if(bigPits.get(0).getstones() < bigPits.get(1).getstones())
 			temp = "Player 2 Won the game";
+		else if(bigPits.get(0).getstones() < bigPits.get(1).getstones())
+			temp = "Player 1 Won the game";
 		else
-			temp = "The game it tied";
+			temp = "THE GAME IS A TIE";
 		
 		return temp;
 	}

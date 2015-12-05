@@ -84,14 +84,14 @@ public class Pit implements Icon, MouseListener
 		{	
 			
 			if (!model.gameEnded()) {
-			if(this.getId() <= 5 && model.player1Turn() == true)
+			if(this.getId() <= 5 && model.player2Turn() == true)
 			{
 				int tempStones = this.model.getStonesPit(this.getId());
 				this.model.saveUndo();
 				//this.model.clearPit(this.getId());  
 				this.model.playerMove(this.getId(), tempStones);
 			}
-			else if(this.getId() >= 6 && model.player1Turn() == false)
+			else if(this.getId() >= 6 && model.player2Turn() == false)
 			{
 				int tempStones = this.model.getStonesPit(this.getId());
 				this.model.saveUndo();

@@ -82,12 +82,12 @@ public class Mancala implements ChangeListener
 		center.add(view.StartBigPit(1), BorderLayout.WEST);  // big pit
 		center.add(view.StartBigPit(-1), BorderLayout.EAST);	// big pit
 		center.add(view.StartMiddlePits(), BorderLayout.CENTER);	// pits
-		center.add(view.toplabel(), BorderLayout.NORTH);	// top label
-		center.add(view.botlabel(), BorderLayout.SOUTH);	// bot label
+		center.add(view.botlabel(), BorderLayout.NORTH);	// top label
+		center.add(view.toplabel(), BorderLayout.SOUTH);	// bot label
 		output.add(center, BorderLayout.CENTER);
 		output.add(view.playersTurn(), BorderLayout.SOUTH);
-		frame.add(view.ManA(), BorderLayout.WEST);		//
-		frame.add(view.ManB(), BorderLayout.EAST);
+		frame.add(view.ManB(), BorderLayout.WEST);		//
+		frame.add(view.ManA(), BorderLayout.EAST);
 		//frame.add(view.playersTurn(), BorderLayout.SOUTH);
 		frame.add(output, BorderLayout.CENTER);
 		frame.setResizable(false);

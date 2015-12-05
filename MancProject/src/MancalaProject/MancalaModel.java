@@ -1,5 +1,4 @@
 package MancalaProject;
-
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 
@@ -29,13 +28,8 @@ public class MancalaModel
 	{
 		this.curPlayer = 1; // 1 for player 1, -1 for player 2
 		pits = new ArrayList<Pit>();
-		tempPits = new ArrayList<Pit>();
 		bigPits = new ArrayList<BigPit>();
-<<<<<<< HEAD
-		tempBigPits = new ArrayList<BigPit>();
-=======
 		circle = new ArrayList<Pit>();
->>>>>>> branch 'master' of https://github.com/dr-p/TeamManProject.git
 		listeners = new ArrayList<ChangeListener>();	
 		undo = 3;
 	}
@@ -104,7 +98,6 @@ public class MancalaModel
 	}
 	public void undoCalled()
 	{
-		if (!tempPits.isEmpty()) {
 		pits = new ArrayList<Pit>();
 		for (Pit p : tempPits) {
 			pits.add(p.clone());
@@ -118,7 +111,7 @@ public class MancalaModel
 		for(ChangeListener l : this.listeners) {
 			l.stateChanged(new ChangeEvent(this));
 		}
-		}
+		
 	}
 	
 	public void saveUndo()
@@ -170,97 +163,6 @@ public class MancalaModel
 		int selectedPit = thePit;
 		int totalStones = getStonesPit(selectedPit);
 		pits.get(pitToClear).Clear();
-
-		boolean sameTurn = true;
-		
-		while(totalStones != 0) {
-			
-			if (selectedPit == -1) {
-				if (player1Turn()) {
-					bigPits.get(0).addStones(1);
-					totalStones--;
-					//selectedPit = 6;
-				}
-				selectedPit = 6;
-				}
-				if (selectedPit == 12) {
-					if (!player1Turn()) {
-						bigPits.get(1).addStones(1);
-						totalStones--;
-						//selectedPit = 5;
-					}
-					selectedPit = 5;
-				}
-			while (sameTurn == true) {
-			if (selectedPit <= 5 && selectedPit >= 0) {
-				--selectedPit;
-				for(int i = selectedPit; i >= 0 && totalStones > 0; i--) { // && selectedPit != 6
-					pits.get(i).addStones(1);
-					totalStones--;
-					selectedPit = i;
-				}
-				if (totalStones > 0) { // && selectedPit != 6
-					if (player1Turn()) {
-						bigPits.get(0).addStones(1);
-						totalStones--;
-						selectedPit = 6;	
-					}
-					if (totalStones > 0) {
-						for (int j = selectedPit; j <= 11 && totalStones > 0; j++) {
-							pits.get(j).addStones(1);
-							totalStones--;
-							selectedPit = j;
-						}
-						if (totalStones > 0) {
-							if (!player1Turn()) {
-								bigPits.get(1).addStones(1);
-								totalStones--;
-								selectedPit = 5;
-							}
-							selectedPit = 5;
-						}
-					}
-				}
-				
-			}
-			sameTurn = false;
-			}
-			while (sameTurn == true) {
-			if (selectedPit <= 11 && selectedPit >= 6 && totalStones != 0) {
-				++selectedPit;
-				for(int i = selectedPit; i <= 11 && totalStones > 0; i++) { // && selectedPit != 5
-					pits.get(i).addStones(1);
-					totalStones--;
-					selectedPit = i;
-				}
-				if (totalStones > 0) { // && selectedPit != 5
-					if (!player1Turn()) {
-						bigPits.get(1).addStones(1);
-						totalStones--;
-						selectedPit = 5;
-					}
-					if (totalStones > 0) {
-						for (int j = selectedPit; j >= 0 && totalStones > 0; j--) {
-							pits.get(j).addStones(1);
-							totalStones--;
-							selectedPit = j;
-						}
-						if (totalStones > 0) {
-							if (player1Turn()) {
-								bigPits.get(0).addStones(1);
-								totalStones--;
-								selectedPit = 6;
-							}
-							selectedPit = 6;
-						}
-					}
-					
-				}
-				
-			}
-			sameTurn = false;
-			}
-			
 		if(selectedPit <= 5)
 		{
 			if( selectedPit == 5)
@@ -281,9 +183,13 @@ public class MancalaModel
 				totalStones--;
 				selectedPit++;
 				if(selectedPit == 6){
-					if(this.curPlayer == 1)
+					if(this.curPlayer == 1){
 						bigPits.get(0).addStones(1);
-					circle.get(selectedPit).addStones(1);
+						totalStones--;}
+					if(totalStones > 0)
+					{
+						circle.get(selectedPit).addStones(1);
+					}
 					}
 				else if(selectedPit == 12  && this.curPlayer == -1){
 					bigPits.get(1).addStones(1);

@@ -34,7 +34,7 @@ public class classic implements Borad
 			 }
 		String temp = String.valueOf(stones);
 		g2.setColor(Color.BLACK);
-		g2.drawString(temp, x+15, y+15);
+		g2.drawString(temp, x, y+15);
 	}
 
 	@Override

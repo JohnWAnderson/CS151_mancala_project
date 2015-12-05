@@ -94,9 +94,7 @@ public class MancalaModel
 		Pit temp = pits.get(i);
 		temp.Clear();
 	}
-	public void undoCalled(){
-	}
-	public void undocalled()
+	public void undoCalled()
 	{
 		pits = new ArrayList<Pit>();
 		for (Pit p : tempPits) {
@@ -142,8 +140,9 @@ public class MancalaModel
 	}
 	public void playerMove(int thePit, int theStones)
 	{
-		tempPits = pits;
-		tempBigPits = bigPits;
+		saveUndo();
+		//tempPits = pits;
+		//tempBigPits = bigPits;
 		int selectedPit = thePit;
 		int total = theStones;
 		int pitToAccess = 0;

@@ -83,8 +83,7 @@ public class Pit implements Icon, MouseListener
 		 */
 		@Override
 		public void mouseClicked(MouseEvent arg0)
-		{
-			//model.saveUndo();
+		{	
 			if(this.getId() <= 5 && model.player1Turn() == true)
 			{
 				int tempStones = this.model.getStonesPit(this.getId());

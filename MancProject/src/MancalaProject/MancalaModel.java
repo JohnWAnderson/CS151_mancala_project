@@ -175,7 +175,7 @@ public class MancalaModel
 			this.lastPickedRow = "bot";
 		}
 			
-		
+		Boolean check = true;
 		circleArray();
 		int pitToClear = thePit;
 		int selectedPit = thePit;
@@ -196,14 +196,58 @@ public class MancalaModel
 			else
 				selectedPit =5;
 		}
+		if(totalStones == 1 && (selectedPit <= 4 && selectedPit >= 0))
+		{
+			int owned;
+			int nextPit = selectedPit +1;
+			if(selectedPit ==0)
+				owned = 11;
+			else if(selectedPit ==1)
+				owned = 10;
+			else if(selectedPit ==2)
+				owned = 9;
+			else if(selectedPit ==3)
+				owned =8;
+			else
+				owned =7;
+				
+			if(circle.get(nextPit).getstones() == 0)
+			{
+				int taken = circle.get(owned).getstones() + 1;
+				circle.get(owned).Clear();
+				bigPits.get(0).addStones(taken);
+				check = false;
+				System.out.println("-------");
+			}
+		}
+		else if(totalStones == 1 && (selectedPit <= 10 && selectedPit >= 6))
+		{
+			int owned;
+			int nextPit = selectedPit +1;
+			if(selectedPit == 6)
+				owned = 5;
+			else if(selectedPit ==7)
+				owned = 4;
+			else if(selectedPit == 8)
+				owned = 3;
+			else if(selectedPit == 9)
+				owned =2;
+			else
+				owned = 1;
+				
+			if(circle.get(nextPit).getstones() == 0)
+			{
+				int taken = circle.get(owned).getstones() + 1;
+				circle.get(owned).Clear();
+				bigPits.get(1).addStones(taken);
+				check = false;
+				System.out.println("-DDD-");
+			}
+		}
+		if(check == true)
+		{
 		while(totalStones != 0) 
 			{
-				if(totalStones == 1)
-				{
-					
-				}
-				else
-				{
 				totalStones--;
 				selectedPit++;
 					if(selectedPit == 6){
@@ -218,8 +262,9 @@ public class MancalaModel
 							selectedPit = -1;
 						else
 							circle.get(selectedPit).addStones(1);	
-				}
+
 			}
+		}
 		this.curPlayer = (this.curPlayer * -1); // alternate current player each time to negative and nonnegative num
 		for (ChangeListener l : this.listeners) { // notify listeners (view)
 			l.stateChanged(new ChangeEvent(this));

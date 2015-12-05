@@ -22,6 +22,7 @@ public class MancalaModel
 	private ArrayList<ChangeListener> listeners;
 	private int curPlayer; //variable to keep track of current player, see constructor for value meanings
 	private int undo;
+	private boolean gameOver = false;
 	
 	public MancalaModel()
 	{
@@ -140,6 +141,9 @@ public class MancalaModel
 	}
 	public void playerMove(int thePit, int theStones)
 	{
+		saveUndo();
+		//tempPits = pits;
+		//tempBigPits = bigPits;
 		int selectedPit = thePit;
 		int total = theStones;
 		int pitToAccess = 0;
@@ -301,5 +305,41 @@ public class MancalaModel
 		for (ChangeListener l : this.listeners) {
 			l.stateChanged(new ChangeEvent(this));
 		}
+	}
+	public boolean gameEnded() {
+		return gameOver;
+	}
+	public void checkWin() {
+		int count = 0;
+		for (int i = 0; i <=5; i++){
+			if (pits.get(i).getstones() == 0)
+				++count;
+		}
+		if (count == 6) {
+			for (int i = 6; i <=11; i++) {
+				bigPits.get(1).addStones(pits.get(i).getstones());
+				pits.get(i).Clear();
+			}
+			for(ChangeListener l : this.listeners) {
+				l.stateChanged(new ChangeEvent(this));
+			}
+				gameOver = true;
+		}
+		count = 0;
+		for(int i = 6; i <=11; i++) {
+			if (pits.get(i).getstones() == 0)
+				++count;
+		}
+		if (count == 6) {
+			for (int i = 0; i <=5; i++) {
+				bigPits.get(0).addStones(pits.get(i).getstones());
+				pits.get(i).Clear();
+			}
+			for(ChangeListener l : this.listeners) {
+				l.stateChanged(new ChangeEvent(this));
+			}
+			gameOver = true;
+		}
+		gameOver = false;
 	}
 }

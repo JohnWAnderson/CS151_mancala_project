@@ -84,6 +84,8 @@ public class Pit implements Icon, MouseListener
 		@Override
 		public void mouseClicked(MouseEvent arg0)
 		{	
+			
+			if (!model.gameEnded()) {
 			if(this.getId() <= 5 && model.player1Turn() == true)
 			{
 				int tempStones = this.model.getStonesPit(this.getId());
@@ -100,6 +102,13 @@ public class Pit implements Icon, MouseListener
 			}
 			System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
 			System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
+			} else {
+				
+				System.out.println("Game over, player with most stones wins.");
+			}
+			model.checkWin();
+			
+			
 		}
 		@Override
 	public void mouseEntered(MouseEvent arg0) {

@@ -31,11 +31,8 @@ public class MancalaModel
 		pits = new ArrayList<Pit>();
 		tempPits = new ArrayList<Pit>();
 		bigPits = new ArrayList<BigPit>();
-<<<<<<< HEAD
 		tempBigPits = new ArrayList<BigPit>();
-=======
 		circle = new ArrayList<Pit>();
->>>>>>> branch 'master' of https://github.com/dr-p/TeamManProject.git
 		listeners = new ArrayList<ChangeListener>();	
 		undo = 3;
 	}
@@ -301,7 +298,7 @@ public class MancalaModel
 		for (ChangeListener l : this.listeners) { // notify listeners (view)
 			l.stateChanged(new ChangeEvent(this));
 		}
-	}
+	}}
 	
 	public static int reachPit(int selectedPit)
 	{

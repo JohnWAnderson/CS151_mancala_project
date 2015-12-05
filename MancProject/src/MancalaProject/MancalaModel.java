@@ -14,6 +14,7 @@ import javax.swing.event.ChangeListener;
  */
 public class MancalaModel 
 {
+	private ArrayList<Pit> circle;
 	private ArrayList<Pit> pits;   
 	private ArrayList<Pit> tempPits;
 	private ArrayList<BigPit> tempBigPits;
@@ -29,6 +30,7 @@ public class MancalaModel
 		this.curPlayer = 1; // 1 for player 1, -1 for player 2
 		pits = new ArrayList<Pit>();
 		bigPits = new ArrayList<BigPit>();
+		circle = new ArrayList<Pit>();
 		listeners = new ArrayList<ChangeListener>();	
 		undo = 3;
 	}
@@ -139,111 +141,65 @@ public class MancalaModel
 			tempBigPits.add(b);
 		} */
 	}
+	public void circleArray()
+	{
+		circle = new ArrayList<Pit>();
+		circle.add(pits.get(5)); //0
+		circle.add(pits.get(4));//1
+		circle.add(pits.get(3));//2
+		circle.add(pits.get(2));//3
+		circle.add(pits.get(1));//4
+		circle.add(pits.get(0));//5
+		circle.add(pits.get(6));//6
+		circle.add(pits.get(7));//7
+		circle.add(pits.get(8));//8
+		circle.add(pits.get(9));//9
+		circle.add(pits.get(10));//10
+		circle.add(pits.get(11));//11
+	}
 	public void playerMove(int thePit, int theStones)
 	{
+		circleArray();
 		int pitToClear = thePit;
-		//saveUndo();
 		int selectedPit = thePit;
 		int totalStones = getStonesPit(selectedPit);
-		
 		pits.get(pitToClear).Clear();
-		while(totalStones != 0) {
-			if (selectedPit == -1) {
-				if (player1Turn()) {
-					bigPits.get(0).addStones(1);
-					totalStones--;
-					//selectedPit = 6;
-				}
-				selectedPit = 6;
-				}
-				if (selectedPit == 12) {
-					if (!player1Turn()) {
-						bigPits.get(1).addStones(1);
-						totalStones--;
-						//selectedPit = 5;
-					}
-					selectedPit = 5;
-				}
-			if (selectedPit <= 5 && selectedPit >= 0) {
-				--selectedPit;
-				/*if (selectedPit == -1) {
-					if (player1Turn()) {
-						bigPits.get(0).addStones(1);
-						totalStones--;
-						//selectedPit = 6;
-					}
-					selectedPit = 0;
-				}*/
-				for(int i = selectedPit; i >= 0 && totalStones != 0; i--) { // && selectedPit != 6
-					pits.get(i).addStones(1);
-					totalStones--;
-					selectedPit = i;
-				}
-				if (totalStones != 0 && selectedPit != 6) {
-					if (player1Turn()) {
-						bigPits.get(0).addStones(1);
-						totalStones--;
-						selectedPit = 6;	
-					}
-					if (totalStones != 0) {
-						for (int j = selectedPit; j >= 6 && totalStones != 0; j++) {
-							pits.get(j).addStones(1);
-							totalStones--;
-							selectedPit = j;
-						}
-						if (totalStones != 0) {
-							if (!player1Turn()) {
-								bigPits.get(1).addStones(1);
-								totalStones--;
-								selectedPit = 5;
-							}
-						}
-					}
-				}
-			}
-			else if (selectedPit <= 11 && selectedPit >= 6 && totalStones != 0) {
-				++selectedPit;
-				/*if (selectedPit == 12) {
-					if (!player1Turn()) {
-						bigPits.get(1).addStones(1);
-						totalStones--;
-						selectedPit = 5;
-					}
-					selectedPit = 11;
-				}*/
-				
-				for(int i = selectedPit; i <= 11 && totalStones != 0; i++) { // && selectedPit != 5
-					pits.get(i).addStones(1);
-					totalStones--;
-					selectedPit = i;
-				}
-				if (totalStones != 0 && selectedPit != 5) {
-					if (!player1Turn()) {
-						bigPits.get(1).addStones(1);
-						totalStones--;
-						selectedPit = 5;
-					}
-					if (totalStones != 0) {
-						for (int j = selectedPit; j !=0 && totalStones != 0; j--) {
-							pits.get(j).addStones(1);
-							totalStones--;
-							selectedPit = j;
-						}
-						if (totalStones != 0) {
-							if (player1Turn()) {
-								bigPits.get(0).addStones(1);
-								totalStones--;
-								selectedPit = 6;
-							}
-						}
-					}
-				}
-			}
-			//++selectedPit;
-			
+		if(selectedPit <= 5)
+		{
+			if( selectedPit == 5)
+				selectedPit =0;
+			else if(selectedPit==4)
+				selectedPit =1;
+			else if(selectedPit ==3)
+				selectedPit =2;
+			else if(selectedPit ==2)
+				selectedPit =3;
+			else if(selectedPit == 1)
+				selectedPit =4;
+			else
+				selectedPit =5;
 		}
-		
-	
+		while(totalStones != 0) 
+			{
+				totalStones--;
+				selectedPit++;
+				if(selectedPit == 6){
+					if(this.curPlayer == 1)
+						bigPits.get(0).addStones(1);
+					circle.get(selectedPit).addStones(1);
+					}
+				else if(selectedPit == 12  && this.curPlayer == -1){
+					bigPits.get(1).addStones(1);
+					selectedPit= -1;}
+				else if(selectedPit ==12)
+				{
+					selectedPit = -1;
+				}
+				else
+				{
+					circle.get(selectedPit).addStones(1);
+				}
+			}
 		this.curPlayer = (this.curPlayer * -1); // alternate current player each time to negative and nonnegative num
 		for (ChangeListener l : this.listeners) { // notify listeners (view)
 			l.stateChanged(new ChangeEvent(this));

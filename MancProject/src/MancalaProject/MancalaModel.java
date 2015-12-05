@@ -275,6 +275,7 @@ public class MancalaModel
 		for (ChangeListener l : this.listeners) { // notify listeners (view)
 			l.stateChanged(new ChangeEvent(this));
 		}
+
 	}
 	
 	public static int reachPit(int selectedPit)

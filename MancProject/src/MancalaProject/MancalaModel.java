@@ -108,43 +108,66 @@ public class MancalaModel
 		tempPits = pits;
 		tempBigPits = bigPits;
 	}
-	public void playerMove(int thePit)
+	public void playerMove(int thePit, int theStones)
 	{
-		/* It looks like this method checks if access to bigPits are allowed, but it doesn't check which big pit to access
-		 *  It has to know which big pit to  skip
-		 */
-		/*
-		 * temppits = pits;
-		 * tempbigpits = bigpits;
-		boolean toAccessBigPit; // Checks if Big Pit will be accessed depending on the selected pit and # of stones in the selected pit.
-		int numPitsToAccess;
-		int total = getStonesPit(selectedPit);
-		if(this.curPlayer == 1 && (selectedPit >= 0 && selectedPit <=5)) // Checks if selected pit is in the 1st row of center pits
-		{
-			numPitsToAccess = selectedPit - total;
-			if(numPitsToAccess < 0) { toAccessBigPit = true; } // toAccessBigPit is true if Big Pit when # of pits accessed surpasses the player's Big pit.
-	 
-			for(int i = total; total > 0; i--)
-			{
-	 				
-			}
-		}
-		else if(this.curPlayer == 1 && (selectedPit >= 6 && selectedPit <= 11)) // Checks if selected pit is in the 2nd row of center pits
-		{
-	 
-		} */
-		
 		tempPits = pits;
 		tempBigPits = bigPits;
 		int selectedPit = thePit;
-		int total = getStonesPit(selectedPit);
+		int total = theStones;
 		int pitToAccess = 0;
-		//int destinationPit;
-		boolean isEmpty;
+		int nextPit = 0;
 		if(this.curPlayer == 1)
 		{
 			if(selectedPit >= 0 && selectedPit <= 5)
 			{
+				pitToAccess = selectedPit - total;
+				boolean isStoneAddedInBigPit = false;
+				
+				if(pitToAccess < 0)
+				{
+					bigPits.get(0).addStones(1);
+					
+					while(total > 0)
+					{
+						if(selectedPit >= 1 && selectedPit <= 5)
+							nextPit = pits.indexOf(selectedPit-1);
+						else // else if(selectedPit == 0)
+						{
+							nextPit = 0;
+						}
+						
+						if(nextPit > 0 && !isStoneAddedInBigPit)
+						{
+							pits.get(selectedPit-1).addStones(1);
+							total--;
+							selectedPit--;
+						}
+						else if(nextPit == 0 && !isStoneAddedInBigPit)
+						{
+							isStoneAddedInBigPit = true;
+							total--; // add stone into BigPit
+							selectedPit = 5; // iterate selectedPit to pits index 5
+						}
+						else if(isStoneAddedInBigPit)
+						{
+							pits.get(selectedPit+1).addStones(1);
+							total--;
+							selectedPit++;
+						}
+						
+					}
+					
+				}
+				
+				else if(pitToAccess >= 0)
+				{
+					while(total > 0)
+					{
+						pits.get(selectedPit-1).addStones(1);
+						total--;
+						selectedPit--;
+					}
+				}
 				
 			}
 			else if(selectedPit >= 6 && selectedPit <= 11)
@@ -162,30 +185,34 @@ public class MancalaModel
 			{
 				// selectedPit is cleared in mouseListener;
 				pitToAccess = selectedPit + total;
-				System.out.println("pitToAccess: " + pitToAccess);
+				//System.out.println("pitToAccess: " + pitToAccess);
 				boolean isStoneAddedInBigPit = false;
-				//bigPits.get(1).addStones(1);
 
 				if(pitToAccess > 11)
 				{
 					bigPits.get(1).addStones(1);
-					//int leftOvers;
 					
-					/*
+					
 					while(total > 0)
 					{
-						int nextPit = pits.indexOf(selectedPit+1);
-						if(nextPit <= 11 && !isStoneAddedInBigPit)
+						if(selectedPit >= 6 && selectedPit <= 10)
+							nextPit = pits.indexOf(selectedPit+1);
+						else // else if(selectedPit == 11)
+						{
+							nextPit = 11;
+						}	
+						
+						if(nextPit < 11 && !isStoneAddedInBigPit)
 						{
 							pits.get(selectedPit+1).addStones(1);
 							total--;
 							selectedPit++;
 						}
-						else if(nextPit > 11 && !isStoneAddedInBigPit)
+						else if(nextPit == 11 && !isStoneAddedInBigPit)
 						{
 							isStoneAddedInBigPit = true;
 							total--; // add stone into BigPit
-							selectedPit = 6; // iterate selectedPit to pits index 5
+							selectedPit = 6; // iterate selectedPit to pits index 6
 						}
 						else if(isStoneAddedInBigPit)
 						{
@@ -195,14 +222,19 @@ public class MancalaModel
 						}
 					}
 					// Check if selectedPit is Empty. If True, playerMove(selectedPit)
-					boolean isPitEmpty = pits.get(selectedPit).isEmpty();
+					//boolean isPitEmpty = pits.get(selectedPit).isEmpty();
 					
-					if(!isPitEmpty) { playerMove(selectedPit); }
-					*/
+					//if(!isPitEmpty) { playerMove(selectedPit, this.getStonesPit(selectedPit)); }
+					
 				}
-				else
+				else if(pitToAccess <= 11)
 				{
-					
+					while(total > 0)
+					{
+						pits.get(selectedPit+1).addStones(1);
+						total--;
+						selectedPit++;
+					}
 				}
 			}
 		}

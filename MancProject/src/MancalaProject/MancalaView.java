@@ -229,6 +229,8 @@ public class MancalaView
 		{
 			undoTurn = new JLabel(model.whoWon());
 		}
+		
+		
 		if(model.retaketurn() == true)
 		{
 			retake = new JLabel("*You have won another turn*");

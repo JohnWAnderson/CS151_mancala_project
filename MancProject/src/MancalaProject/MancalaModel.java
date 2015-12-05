@@ -206,15 +206,15 @@ public class MancalaModel
 			int owned;
 			int nextPit = selectedPit +1;
 			if(selectedPit ==0)
-				owned = 11;
-			else if(selectedPit ==1)
 				owned = 10;
-			else if(selectedPit ==2)
+			else if(selectedPit ==1)
 				owned = 9;
+			else if(selectedPit ==2)
+				owned = 8;
 			else if(selectedPit ==3)
-				owned =8;
-			else
 				owned =7;
+			else
+				owned =6;
 				
 			if(circle.get(nextPit).getstones() == 0)
 			{
@@ -230,15 +230,15 @@ public class MancalaModel
 			int owned;
 			int nextPit = selectedPit +1;
 			if(selectedPit == 6)
-				owned = 5;
-			else if(selectedPit ==7)
 				owned = 4;
-			else if(selectedPit == 8)
+			else if(selectedPit ==7)
 				owned = 3;
+			else if(selectedPit == 8)
+				owned = 2;
 			else if(selectedPit == 9)
-				owned =2;
+				owned =1;
 			else
-				owned = 1;
+				owned = 0;
 				
 			if(circle.get(nextPit).getstones() == 0)
 			{
@@ -261,6 +261,14 @@ public class MancalaModel
 							{
 								circle.get(selectedPit).addStones(1);
 								totalStones--;
+								if(totalStones == 0 && circle.get(selectedPit).getstones() == 1)
+								{
+									int owned = 5;
+									int taken = circle.get(owned).getstones() +1;
+									circle.get(owned).Clear();
+									circle.get(selectedPit).Clear();
+									bigPits.get(0).addStones(taken);
+								}
 							}
 							else
 								retaketurn = true;
@@ -269,7 +277,18 @@ public class MancalaModel
 							bigPits.get(1).addStones(1);
 							if(totalStones > 0)
 							{
-								selectedPit = -1;
+								selectedPit = 0;
+								circle.get(selectedPit).addStones(1);
+								totalStones--;
+								if(totalStones == 0 && circle.get(selectedPit).getstones() == 1)
+								{
+									int owned = 11;
+									int taken = circle.get(owned).getstones() +1;
+									circle.get(owned).Clear();
+									circle.get(selectedPit).Clear();
+									bigPits.get(1).addStones(taken);
+								}
+								
 							}
 							else
 								retaketurn = true;

@@ -23,6 +23,7 @@ public class MancalaModel
 	private int curPlayer; //variable to keep track of current player, see constructor for value meanings
 	private int undo;
 	private boolean gameOver = false;
+	private String lastPickedRow = "top";
 	
 	public MancalaModel()
 	{
@@ -157,8 +158,24 @@ public class MancalaModel
 		circle.add(pits.get(10));//10
 		circle.add(pits.get(11));//11
 	}
+	public String getLastMove() {
+		return this.lastPickedRow;
+	}
 	public void playerMove(int thePit, int theStones)
 	{
+		
+		if (thePit >= 0 && thePit <= 5) {
+			if (this.lastPickedRow.equals("bot"))
+				this.setUndo();
+			this.lastPickedRow = "top"; 
+			}
+		else if (thePit >= 6 && thePit <= 11) {
+			if (this.lastPickedRow.equals("top"))
+				this.setUndo();
+			this.lastPickedRow = "bot";
+		}
+			
+		
 		circleArray();
 		int pitToClear = thePit;
 		int selectedPit = thePit;
@@ -200,7 +217,6 @@ public class MancalaModel
 					circle.get(selectedPit).addStones(1);
 				}
 			}
-		this.setUndo();
 		this.curPlayer = (this.curPlayer * -1); // alternate current player each time to negative and nonnegative num
 		for (ChangeListener l : this.listeners) { // notify listeners (view)
 			l.stateChanged(new ChangeEvent(this));

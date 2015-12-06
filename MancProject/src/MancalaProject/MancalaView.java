@@ -206,34 +206,34 @@ public class MancalaView
 		JLabel Won = new JLabel();
 		if(model.player2Turn() == true)
 		{
-			whoeseTurn = new JLabel("Player 2 turn: ");
+			whoeseTurn = new JLabel("Player 2 turn");
 			System.out.println("Player 1");
 		}
 		else
 		{
-			whoeseTurn = new JLabel("Player 1 turn: ");
+			whoeseTurn = new JLabel("Player 1 turn  ");
 			System.out.println("Player 2");
 		}
 		if(model.gameEnded() == false){
 			if(model.player2Turn() == true){
 				if(model.checkUndo() == true)
 				{
-					undoTurn = new JLabel(model.getUndo() + "/3 undo's left");
+					undoTurn = new JLabel("Player has "+ model.getUndo() + "/3 undo's left");
 				}
 				else if(model.checkUndo() == false)
 				{
-					undoTurn = new JLabel("You have no more undos");
+					undoTurn = new JLabel("Player You have no more undos");
 				}
 			}
 			else
 			{
 				if(model.checkUndo() == true)
 				{
-					undoTurn = new JLabel(model.getUndo() + "/3 undo's left");
+					undoTurn = new JLabel("Player has "+  model.getUndo() + "/3 undo's left");
 				}
 				else if(model.checkUndo() == false)
 				{
-					undoTurn = new JLabel("You have no more undos");
+					undoTurn = new JLabel("Past player: You have no more undos");
 				}
 			}
 		}

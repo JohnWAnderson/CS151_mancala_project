@@ -340,29 +340,29 @@ public class MancalaModel
 									System.out.println("IT GOT CALLED");
 									int owned;
 									if(selectedPit ==0)
-										owned = 11;
-									else if(selectedPit ==1)
 										owned = 10;
-									else if(selectedPit ==2)
+									else if(selectedPit ==1)
 										owned = 9;
+									else if(selectedPit ==2)
+										owned = 8;
 									else if(selectedPit ==3)
-										owned =8;
-									else if (selectedPit ==4)
 										owned =7;
+									else if (selectedPit ==4)
+										owned =6;
 									else if(selectedPit == 5)
-										owned = 6;
-									else if(selectedPit == 6)
 										owned = 5;
-									else if(selectedPit ==7)
+									else if(selectedPit == 6)
 										owned = 4;
-									else if(selectedPit == 8)
+									else if(selectedPit ==7)
 										owned = 3;
+									else if(selectedPit == 8)
+										owned = 2;
 									else if(selectedPit == 9)
-										owned =2;
+										owned =1;
 									else if(selectedPit == 10)
-										owned = 1;
-									else
 										owned = 0;
+									else
+										owned = 11;
 									int taken = circle.get(owned).getstones() +1;
 									circle.get(owned).Clear();
 									circle.get(selectedPit).Clear();

@@ -24,6 +24,14 @@ public class Pit implements Icon, MouseListener
 	private int stones;
 	private MancalaModel model;
 	private int pitId;
+	/**
+	 * builds the pit
+	 * @param size size of the pit
+	 * @param style style to use
+	 * @param stones amount of stones to draw
+	 * @param id of the pit
+	 * @param mod the model information
+	 */
 	public Pit(int size, Borad style, int stones, int id, MancalaModel mod)
 	{
 		this.size = size;
@@ -32,9 +40,15 @@ public class Pit implements Icon, MouseListener
 		this.model = mod;
 		this.pitId = id;
 	}
+	/**
+	 * holder
+	 */
 	public  Pit() {
 		
 	}
+	/**
+	 * clones everything in the pit
+	 */
 	public Pit clone() {
 		Pit p = new Pit();
 		p.size = size;
@@ -45,40 +59,65 @@ public class Pit implements Icon, MouseListener
 		return p;
 		
 	}
+	/**
+	 *  gets the id of the pit
+	 * @return pitId  the id of the pit
+	 */
 	public int getId()
 	{
 		return this.pitId;
 	}
+	/**
+	 * adds stones to the amount of stones
+	 * @param stones amount to add
+	 */
 	public void addStones(int stones)
 	{
 		this.stones += stones;
 	}
+	/**
+	 * gets the amount of stones in the pit
+	 * @return stones the amount of stones in the pit
+	 */
 	public int getstones()
 	{
 		return stones;
 	}
+	/**
+	 * sets the amount of stones equal to zero
+	 */
 	public void Clear()
 	{
 		stones = 0;
 	}
-	
+	/**
+	 * checks if the pits is empty 
+	 * @return boolean T if empty F if not empty 
+	 */
 	public boolean isEmpty()
 	{
 		if(stones == 0) return true;
 		else return false;
 	}
+	/**
+	 * gets the height of the pit
+	 * @return size the height
+	 */
 	@Override
 	public int getIconHeight() {
 		return size;
 	}
-
+	/**
+	 * gets the width of the pit
+	 * @return size the width
+	 */
 	@Override
 	public int getIconWidth() {
 		return size;
 	}
 	/**
-		 * use mouse clicked
-		 * @param arg0
+		 * sends information to the model for what pit is clicked
+		 * @param arg
 		 */
 		@Override
 		public void mouseClicked(MouseEvent arg0)
@@ -118,13 +157,6 @@ public class Pit implements Icon, MouseListener
 			// TODO Auto-generated method stub
 		
 		} 
-		/**
-		 * MousePressed method
-		 * currently, it prints to console which pit was pressed and it starts andy's playerMove function
-		 * The playerMove function in its current state causes a loop or error somewhere that seems to make
-	 * the gui "hang," so I commented out the decision making code of the method for now until fixed
-		 * @param arg0
-		 */
 		@Override
 		public void mousePressed(MouseEvent arg0) {
 		//	System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
@@ -135,6 +167,9 @@ public class Pit implements Icon, MouseListener
 		public void mouseReleased(MouseEvent arg0) {
 			// TODO Auto-generated method stub
 		}
+		/**
+		 * paints the icon using the stratagy pattern
+		 */
 	@Override
 	public void paintIcon(Component c, Graphics g, int x, int y) {
 		Graphics2D g2 = (Graphics2D)g;

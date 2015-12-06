@@ -215,15 +215,27 @@ public class MancalaView
 			System.out.println("Player 2");
 		}
 		if(model.gameEnded() == false){
-			
+			if(model.player2Turn() == true){
 				if(model.checkUndo() == true)
 				{
-					undoTurn = new JLabel("You have " + model.getUndo() + "/3 undo's left");
+					undoTurn = new JLabel(model.getUndo() + "/3 undo's left");
 				}
 				else if(model.checkUndo() == false)
 				{
 					undoTurn = new JLabel("You have no more undos");
 				}
+			}
+			else
+			{
+				if(model.checkUndo() == true)
+				{
+					undoTurn = new JLabel(model.getUndo() + "/3 undo's left");
+				}
+				else if(model.checkUndo() == false)
+				{
+					undoTurn = new JLabel("You have no more undos");
+				}
+			}
 		}
 		else
 		{

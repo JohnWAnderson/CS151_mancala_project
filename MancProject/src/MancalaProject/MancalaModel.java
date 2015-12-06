@@ -307,15 +307,15 @@ public class MancalaModel
 							if(totalStones > 0)
 							{
 								circle.get(selectedPit).addStones(1);
-								totalStones--;
-								if(totalStones == 0 && circle.get(selectedPit).getstones() == 1)
-								{
-									int owned = 5;
-									int taken = circle.get(owned).getstones() +1;
-									circle.get(owned).Clear();
-									circle.get(selectedPit).Clear();
-									bigPits.get(0).addStones(taken);
-								}
+							//	totalStones--;
+							//	if(totalStones == 0 && circle.get(selectedPit).getstones() == 1)
+							//	{
+							//		int owned = 5;
+							//		int taken = circle.get(owned).getstones() +1;
+							//		circle.get(owned).Clear();
+							//		circle.get(selectedPit).Clear();
+							//		bigPits.get(0).addStones(taken);
+							//	}
 							}
 							else
 								retaketurn = true;
@@ -327,15 +327,15 @@ public class MancalaModel
 								selectedPit = 0;
 								circle.get(selectedPit).addStones(1);
 								totalStones--;
-								if(totalStones == 0 && circle.get(selectedPit).getstones() == 1)
-								{
-									int owned = 11;
-									int taken = circle.get(owned).getstones() +1;
-									circle.get(owned).Clear();
-									circle.get(selectedPit).Clear();
-									bigPits.get(1).addStones(taken);
-								}
-								
+							//	if(totalStones == 0 && circle.get(selectedPit).getstones() == 1)
+							//	{
+							//		int owned = 11;
+							//		int taken = circle.get(owned).getstones() +1;
+							//		circle.get(owned).Clear();
+							//		circle.get(selectedPit).Clear();
+							//		bigPits.get(1).addStones(taken);
+							//	}
+							//	
 							}
 							else
 								retaketurn = true;
@@ -373,14 +373,14 @@ public class MancalaModel
 										owned = 0;
 									else
 										owned = 11;
-									if( player2Turn() == true  &&(selectedPit <= 5 && selectedPit >= 0) )
+									if( player2Turn() == true  &&((selectedPit <= 5 && selectedPit >= 0)))
 									{
 									int taken = circle.get(owned).getstones() +1;
 									circle.get(owned).Clear();
 									circle.get(selectedPit).Clear();	
 										bigPits.get(0).addStones(taken);
 									}
-									else if( player2Turn() == false && selectedPit <= 11 && selectedPit >= 6)
+									else if( player2Turn() == false && (selectedPit <= 11 && selectedPit >= 6))
 									{
 										int taken = circle.get(owned).getstones() +1;
 										circle.get(owned).Clear();

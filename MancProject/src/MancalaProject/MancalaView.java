@@ -206,13 +206,13 @@ public class MancalaView
 		JLabel Won = new JLabel();
 		if(model.player2Turn() == true)
 		{
-			whoeseTurn = new JLabel("Player 2 turn");
-			System.out.println("Player 1");
+			whoeseTurn = new JLabel("Player 2 turn ");
+			System.out.println("Player 1 ");
 		}
 		else
 		{
-			whoeseTurn = new JLabel("Player 1 turn  ");
-			System.out.println("Player 2");
+			whoeseTurn = new JLabel("Player 1 turn ");
+			System.out.println("Player 2 ");
 		}
 		if(model.gameEnded() == false){
 			if(model.player2Turn() == true){

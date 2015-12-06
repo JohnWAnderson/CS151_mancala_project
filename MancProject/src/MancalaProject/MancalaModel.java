@@ -145,7 +145,12 @@ public class MancalaModel
 	}
 	public void undoCalled()
 	{
-		if ((this.getLastMove().equals("bot") && this.curPlayer == 1) || (this.getLastMove().equals("top") && this.curPlayer == -1)) {
+		if (((this.getLastMove().equals("bot") && this.curPlayer == 1) || (this.getLastMove().equals("top") && this.curPlayer == -1)) || this.retaketurn() == true) {
+			
+			if (this.retaketurn() == true) {
+				curPlayer = curPlayer * -1;
+				this.retaketurn = false;
+			}
 		undo--;
 		pits = new ArrayList<Pit>();
 		for (Pit p : tempPits) {

@@ -221,6 +221,7 @@ public class MancalaModel
 		Boolean check = true;
 		circleArray();
 		int pitToClear = thePit;
+		int startPit = thePit;
 		int selectedPit = thePit;
 		int totalStones = getStonesPit(selectedPit);
 		pits.get(pitToClear).Clear();

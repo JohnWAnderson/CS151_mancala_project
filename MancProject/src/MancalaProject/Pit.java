@@ -141,7 +141,6 @@ public class Pit implements Icon, MouseListener
 			System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
 			System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
 			} else {
-				
 				System.out.println("Game over, player with most stones wins.");
 			}
 			model.checkWin();

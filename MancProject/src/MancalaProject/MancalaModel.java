@@ -444,6 +444,7 @@ public class MancalaModel
 				l.stateChanged(new ChangeEvent(this));
 			}
 				gameOver = true;
+				setStones(0);
 		}
 		count = 0;
 		for(int i = 6; i <=11; i++) {

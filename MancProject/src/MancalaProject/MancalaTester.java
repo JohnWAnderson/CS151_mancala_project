@@ -2,7 +2,7 @@ package MancalaProject;
 import javax.swing.JOptionPane;
 
 /**
- * 
+ * gets the style and then creates the mancala
  * @author John Anderson
  * @author Christopher Dalporto
  * @author Andy Nguyen

@@ -33,7 +33,10 @@ public class MancalaView
 		model = dataModel;//new MancalaModel(); old code
 		model.setStyle(style);
 	}
-	
+	/**
+	 * create the center pits
+	 * @return centerPits the 12 middle pits
+	 */
 	public JPanel StartMiddlePits()
 	{
 		centerPits = new JPanel();
@@ -54,7 +57,7 @@ public class MancalaView
 		return centerPits;
 	}
 	/**
-	 * updates tha JPanel by not reading the pits to the model
+	 * updates the JPanel by not reading the pits to the model
 	 * @return centerPits  the 12 center pits
 	 */
 	public JPanel MiddlePitsUpdate()
@@ -74,6 +77,10 @@ public class MancalaView
 	        }
 		return centerPits;
 	}
+	/**
+	 * gives the top label
+	 * @return botPanel the top label( name off lol)
+	 */
 	public JPanel toplabel()
 	{
         JPanel botPanel = new JPanel();
@@ -85,7 +92,10 @@ public class MancalaView
          }
 		 return botPanel;
 	}
-	
+	/**
+	 * gives the bot label
+	 * @return toplabel the top label( name off)
+	 */
 	public JPanel botlabel()
 	{
         JPanel topPanel = new JPanel();
@@ -97,6 +107,11 @@ public class MancalaView
          }
 		 return topPanel;
 	}
+	/**
+	 * makes the bigpit
+	 * @param player the number for player
+	 * @return big the jPanel for the big pits
+	 */
 	public JPanel StartBigPit(int player)
 	{
 		int temp;
@@ -117,6 +132,11 @@ public class MancalaView
 		big.add(label);
 		return big;
 	}
+	/**
+	 * makes the bigpit
+	 * @param player the number for player
+	 * @return big the jPanel for the big pits
+	 */
 	public JPanel BigPit(int player)
 	{
 		int temp;
@@ -135,6 +155,10 @@ public class MancalaView
 		big.add(label);
 		return big;
 	}
+	/**
+	 * creates the manA label
+	 * @return leftLabel the label for the left side
+	 */
 	public JPanel ManA()
 	{
 		JPanel leftLabel = new JPanel();
@@ -166,6 +190,10 @@ public class MancalaView
 		leftLabel.setBackground(Color.LIGHT_GRAY);
 		return leftLabel;
 	}
+	/**
+	 * creates the manB label
+	 * @return leftLabel the label for the left side
+	 */
 	public JPanel ManB()
 	{
 		JPanel leftLabel = new JPanel();
@@ -197,6 +225,10 @@ public class MancalaView
 		leftLabel.setBackground(Color.LIGHT_GRAY);
 		return leftLabel;
 	}
+	/**
+	 * gives the bot label with all of the player info with undo button
+	 * @return turn the JPanel with the info for the view
+	 */
 	public JPanel playersTurn()
 	{
 		JPanel turn = new JPanel();
@@ -207,12 +239,10 @@ public class MancalaView
 		if(model.player2Turn() == true)
 		{
 			whoeseTurn = new JLabel("Player 2 turn ");
-			System.out.println("Player 1 ");
 		}
 		else
 		{
 			whoeseTurn = new JLabel("Player 1 turn ");
-			System.out.println("Player 2 ");
 		}
 		if(model.gameEnded() == false){
 			if(model.player2Turn() == true){
@@ -251,10 +281,7 @@ public class MancalaView
 		{
 			retake = new JLabel("");
 		}
-		/**if()
-		{
-			check win condtion then man label for winning player number
-		}*/
+
 		JButton undo = new JButton("UNDO");
 		undo.addActionListener(new ActionListener()
 	     {
@@ -263,10 +290,8 @@ public class MancalaView
 	        	if (model.checkUndo()){
 	        	model.undoCalled();
 	        	} else {
-	        		System.out.println("Invalid move, no more undo calls allowed.");
+	        		
 	        	}
-	        	// works, just needs to get the call to change the model and it will be cahnged and refreshed.
-	        	System.out.println("undo called");
 	        }
 	     });
 		turn.setLayout(new BorderLayout());

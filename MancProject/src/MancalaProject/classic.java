@@ -1,24 +1,16 @@
 package MancalaProject;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Ellipse2D.Double;
-import java.util.ArrayList;
-import java.util.Random;
 
-import javax.swing.Icon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
+import java.util.Random;
 /**
  * the classic board that uses circles and has blue colors.
  * this uses the stratagy pattern form the board interface and the stratagy
  * @author John Anderson
- * @author Christopher Dalporto
+ * @author Christopher Dal Porto
  * @author Andy Nguyen
- *
+ * @version 1.0
  */
 public class classic implements Borad
 {
@@ -79,7 +71,4 @@ public class classic implements Borad
 		int temp = random.nextInt(((50-0) +1) +0);
 		return temp;
 	}
-	
-
-
 }

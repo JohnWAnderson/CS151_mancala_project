@@ -1,7 +1,6 @@
 package MancalaProject;
-import java.awt.event.MouseAdapter;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 /**
@@ -9,24 +8,24 @@ import javax.swing.event.ChangeListener;
  * has the arraylist of pits and arraylist of bigpits
  * has all of the controlling game rules 
  * @author John Anderson
- * @author Christopher Dalporto
+ * @author Christopher Dal Porto
  * @author Andy Nguyen
- *
+ * @version 1.0
  */
 public class MancalaModel 
 {
-	private ArrayList<Pit> circle;
-	private ArrayList<Pit> pits;   
-	private ArrayList<Pit> tempPits;
-	private ArrayList<BigPit> tempBigPits;
-	private ArrayList<BigPit> bigPits;  // 0  is player 1    1 is player 2
-	private Borad style;
-	private ArrayList<ChangeListener> listeners;
+	private ArrayList<Pit> circle; // Circular array for holding values to traverse the array of pits
+	private ArrayList<Pit> pits;  // ArrayList containing the inner pits
+	private ArrayList<BigPit> bigPits;  // ArrayList containing two outer pits. 0  is player 2  1 is player 2
+	private ArrayList<Pit> tempPits; // temporary ArrayList of pits to always hold copy from before turn is finished to allow undo
+	private ArrayList<BigPit> tempBigPits; // temporary ArrayList of pits to always hold copy from before turn is finished to allow undo
+	private Borad style; // Style to set the view to
+	private ArrayList<ChangeListener> listeners; // list of listeners to be notified
 	private int curPlayer; //variable to keep track of current player, see constructor for value meanings
-	private int undo;
-	private boolean gameOver = false;
-	private boolean retaketurn;
-	private String lastPickedRow = "bot";
+	private int undo; // number of undos (held and updated for each turn
+	private boolean gameOver; // gameOver var to be checked each turn before allowing a move
+	private boolean retaketurn; // retaketurn true if bigPit is landed  giving extra turn
+	private String lastPickedRow; // String always holding last row clicked for undo method
 	
 	public MancalaModel()
 	{
@@ -36,6 +35,8 @@ public class MancalaModel
 		circle = new ArrayList<Pit>();
 		listeners = new ArrayList<ChangeListener>();	
 		undo = 3;
+		gameOver = false;
+		lastPickedRow = "bot";
 	}
 	/**
 	 * checks what players turn it is
@@ -69,7 +70,7 @@ public class MancalaModel
 		return pits.size();
 	}
 	/**
-	 * sets the undo back to 3
+	 * Resets the undo variable back to 3
 	 */
 	public void setUndo()
 	{
@@ -93,39 +94,47 @@ public class MancalaModel
 		return bigPits.get(i).getstones();
 	}
 	/**
-	 * keeps track of the current undos
-	 * @return undo returns the amount in the undo
+	 * returns number of undo moves left
+	 * @return undo the variable containing undo value
 	 */
-	/*public int Undo()
-	{
-		this.undo -= 1;
-		return this.undo;
-	}*/
 	public int getUndo() {
 		return this.undo;
 	}
 	/**
-	 * 
-	 * @return
+	 * Checks if there are more undo moves available to current player
+	 * @return true if undo moves left is > 0
 	 */
 	public boolean checkUndo()
 	{
 		return (this.undo > 0);
 	}
-	public void setPlayer(int play) {
-		this.curPlayer = play;
-	}
-	
+	/**
+	 * Sets the style for the strategy pattern of the mancala board
+	 * @param style Borad object 
+	 */
 	public void setStyle(Borad style) {
 		this.style = style;
 	}
+	/**
+	 * Gets the value stored in this.style which implements the Borad interface
+	 * @return style object
+	 */
 	public Borad getStyle() {
 		return style;
 	}
+	/**
+	 * Gets the stones held in any given pit
+	 * @param i the number in pits ArrayList to get from
+	 * @return number of stones in the gotten pit
+	 */
 	public int getStonesPit(int i)
 	{
 		return pits.get(i).getstones();
 	}
+	/**
+	 * Sets the stones for all inner pits of the mancalaBoard at start
+	 * @param number of stones to be set for each inner pit
+	 */
 	public void setStones(int number)
 	{
 		for(Pit p : pits)
@@ -137,12 +146,10 @@ public class MancalaModel
 			l.stateChanged(new ChangeEvent(this));
 		}
 	}
-	
-	public void clearPit(int i)
-	{
-		Pit temp = pits.get(i);
-		temp.Clear();
-	}
+	/**
+	 * Undo method which sets the ArrayLists of pits and bigPits to
+	 * deep copies of the temporary lists from the previous turn
+	 */
 	public void undoCalled()
 	{
 		if (((this.getLastMove().equals("bot") && this.curPlayer == 1) || (this.getLastMove().equals("top") && this.curPlayer == -1)) || this.retaketurn() == true) {
@@ -156,7 +163,6 @@ public class MancalaModel
 		for (Pit p : tempPits) {
 			pits.add(p.clone());
 		}
-		//tempPits.ensureCapacity(pits.size());
 		bigPits = new ArrayList<BigPit>();
 		for (BigPit bp : tempBigPits){
 			bigPits.add(bp.clone());
@@ -171,33 +177,23 @@ public class MancalaModel
 		}
 		
 	}
-	
+	/**
+	 * called each turn to create temporary deep copies of the state of the pits
+	 */
 	public void saveUndo()
 	{
 		tempPits = new ArrayList<Pit>();
 		for (Pit p : pits) {
 			tempPits.add(p.clone());
 		}
-		//tempPits.ensureCapacity(pits.size());
 		tempBigPits = new ArrayList<BigPit>();
 		for (BigPit bp : bigPits){
 			tempBigPits.add(bp.clone());
 		}
-		//tempBigPits.ensureCapacity(bigPits.size());
-		//tempPits.addAll(pits);
-		//tempBigPits.addAll(bigPits);
-		//System.arraycopy(pits, 0, tempPits, 0, pits.size()-1);
-		//System.arraycopy(bigPits, 0, tempBigPits, 0, bigPits.size()-1);
-		/*
-		tempPits = new ArrayList<Pit>();
-		tempBigPits = new ArrayList<BigPit>();
-		for (Pit p : pits) {
-			tempPits.add(p);
-		}
-		for(BigPit b : bigPits) {
-			tempBigPits.add(b);
-		} */
 	}
+	/**
+	 * creates the circle Array differentiating the numbers for easy traversal
+	 */
 	public void circleArray()
 	{
 		circle = new ArrayList<Pit>();
@@ -214,9 +210,18 @@ public class MancalaModel
 		circle.add(pits.get(10));//10
 		circle.add(pits.get(11));//11
 	}
+	/**
+	 * returns the last move String containing which row was last activated
+	 * @return string containing "top" or "bot"
+	 */
 	public String getLastMove() {
 		return this.lastPickedRow;
 	}
+	/**
+	 * playerMove function called each time a pit is clicked from the controller
+	 * @param thePit which pit was clicked
+	 * @param theStones number of stones from that first pit
+	 */
 	public void playerMove(int thePit, int theStones)
 	{
 		retaketurn = false;
@@ -274,7 +279,6 @@ public class MancalaModel
 				circle.get(owned).Clear();
 				bigPits.get(0).addStones(taken);
 				check = false;
-				System.out.println("-------");
 			}
 		}
 		else if(totalStones == 1 && (selectedPit <= 10 && selectedPit >= 6))
@@ -298,7 +302,6 @@ public class MancalaModel
 				circle.get(owned).Clear();
 				bigPits.get(1).addStones(taken);
 				check = false;
-				System.out.println("-DDD-");
 			}
 		}
 		if(check == true)
@@ -334,7 +337,6 @@ public class MancalaModel
 							circle.get(selectedPit).addStones(1);
 								if(totalStones == 0 && (circle.get(selectedPit).getstones() ==1))
 								{
-									System.out.println("IT GOT CALLED");
 									int owned;
 									if(selectedPit ==0)
 										owned = 11;
@@ -386,26 +388,18 @@ public class MancalaModel
 			l.stateChanged(new ChangeEvent(this));
 		}
 	}
-	
-	public static int reachPit(int selectedPit)
-	{
-		return selectedPit;
-		
-	}
-	
+	/**
+	 * attach method to stick listeners to be notified into list
+	 * @param listener ChangeListener to be notified with model  update
+	 */
 	public void attach(ChangeListener listener) {
 		this.listeners.add(listener);
 
 	}
-	public void addChangeListener(ChangeListener listener)
-	{
-		listeners.add(listener);
-
-	}
-	public ArrayList<Pit> getPits()
-	{
-		return pits;
-	}
+	/**
+	 * Adds a pit to the list of pits and updates the listeners
+	 * @param temp pit to be added to list
+	 */
 	public void addPit(Pit temp)
 	{
 		pits.add(temp);
@@ -414,9 +408,17 @@ public class MancalaModel
 			l.stateChanged(new ChangeEvent(this));
 		}
 	}
+	/**
+	 * keeps track of whether game is still going or not
+	 * @return value of gameOver boolean variable
+	 */
 	public boolean gameEnded() {
 		return gameOver;
 	}
+	/**
+	 * gets which player won the game at conclusion of program
+	 * @return String with the win statement
+	 */
 	public String whoWon()
 	{
 		String temp = "";
@@ -429,6 +431,9 @@ public class MancalaModel
 		
 		return temp;
 	}
+	/**
+	 * Checks if win condiditon has been met(one complete row of pits empty) each turn
+	 */
 	public void checkWin() {
 		int count = 0;
 		for (int i = 0; i <=5; i++){

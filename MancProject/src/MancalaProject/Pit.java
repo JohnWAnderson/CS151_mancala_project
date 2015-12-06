@@ -1,21 +1,18 @@
 package MancalaProject;
+
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
-
 import javax.swing.Icon;
-import javax.swing.JComponent;
 /**
  * uses the stratagy patteren to draw the pits
  * has all of the date information for the pit
  * @author John Anderson
- * @author Christopher Dalporto
+ * @author Christopher Dal Porto
  * @author Andy Nguyen
- *
+ * @version 1.0
  */
 public class Pit implements Icon, MouseListener
 {
@@ -47,7 +44,8 @@ public class Pit implements Icon, MouseListener
 		
 	}
 	/**
-	 * clones everything in the pit
+	 * clones everything in the pit to be stored in tempPit list in model
+	 * @return pit Object copy created
 	 */
 	public Pit clone() {
 		Pit p = new Pit();
@@ -127,21 +125,17 @@ public class Pit implements Icon, MouseListener
 			if(this.getId() <= 5 && model.player2Turn() == true)
 			{
 				int tempStones = this.model.getStonesPit(this.getId());
-				this.model.saveUndo();
-				//this.model.clearPit(this.getId());  
+				this.model.saveUndo(); 
 				this.model.playerMove(this.getId(), tempStones);
 			}
 			else if(this.getId() >= 6 && model.player2Turn() == false)
 			{
 				int tempStones = this.model.getStonesPit(this.getId());
 				this.model.saveUndo();
-				//this.model.clearPit(this.getId());  
 				this.model.playerMove(this.getId(), tempStones);
 			}
-			System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
-			System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
 			} else {
-				System.out.println("Game over, player with most stones wins.");
+				//System.out.println("Game over, player with most stones wins.");
 			}
 			model.checkWin();
 			
@@ -158,9 +152,7 @@ public class Pit implements Icon, MouseListener
 		} 
 		@Override
 		public void mousePressed(MouseEvent arg0) {
-		//	System.out.println("Pit " + String.valueOf(this.getId()) + " has been pressed.");
-			//this.model.playerMove(this.getId());
-			//this.model.clearPit(this.getId());
+			// TODO Auto-generated method stub
 		}
 		@Override
 		public void mouseReleased(MouseEvent arg0) {

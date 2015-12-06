@@ -10,9 +10,9 @@ import javax.swing.Icon;
  * It holds the player and the amount of stoens.
  * It gets the size needed and also the style that the user inputs using onf of the board types
  * @author John Anderson
- * @author Christopher Dalporto
+ * @author Christopher Dal Porto
  * @author Andy Nguyen
- *
+ * @version 1.0
  */
 public class BigPit implements Icon
 {
@@ -37,6 +37,10 @@ public class BigPit implements Icon
 	public BigPit() {
 		
 	}
+	/**
+	 * Cloning method making copy of elements to be stored in tempList in model
+	 * @return bigPit object created
+	 */
 	public BigPit clone() {
 		BigPit bp = new BigPit();
 		bp.player = player;

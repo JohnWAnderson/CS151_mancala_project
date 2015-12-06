@@ -1,22 +1,16 @@
 package MancalaProject;
-import java.awt.BorderLayout;
+
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridLayout;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
-import java.util.ArrayList;
 import java.util.Random;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 /**
  *  interface that draws the pis in a custom color and in a retangle shape.
  * @author John Anderson
- * @author Christopher Dalporto
+ * @author Christopher Dal Porto
  * @author Andy Nguyen
- *
+ * @version 1.0
  */
 public class custom implements Borad
 {
@@ -77,7 +71,4 @@ public class custom implements Borad
 		int temp = random.nextInt(((50-0) +1) +0);
 		return temp;
 	}
-	
-	
-
 }

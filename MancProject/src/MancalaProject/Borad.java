@@ -1,16 +1,12 @@
 package MancalaProject;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.util.ArrayList;
 
-import javax.swing.JPanel;
+import java.awt.Graphics2D;
 /**
  * is the interface that has the method's for the types 2 boards we made.  The normal and custom boards
  * @author John Anderson
- * @author Christopher Dalporto
+ * @author Christopher Dal Porto
  * @author Andy Nguyen
- *
+ * @version 1.0
  */
 public interface Borad
 {

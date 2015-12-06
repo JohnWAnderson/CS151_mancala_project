@@ -4,9 +4,9 @@ import javax.swing.JOptionPane;
 /**
  * gets the style and then creates the mancala
  * @author John Anderson
- * @author Christopher Dalporto
+ * @author Christopher Dal Porto
  * @author Andy Nguyen
- *
+ * @version 1.0
  */
 public class MancalaTester
 {
@@ -15,7 +15,7 @@ public class MancalaTester
 	{
 		Borad B1 = new classic();
 		Borad B2 = new custom();
-		MancalaModel dataModel = new MancalaModel(); // single dataModel to be shared by entire program
+		MancalaModel dataModel = new MancalaModel();
 		int selection = JOptionPane.showConfirmDialog(null,
 				"Would you like to play a game", "Mancala",
 				JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -27,7 +27,6 @@ public class MancalaTester
 				"Pick what game stlye that ", "Mancala Game",
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
 				SETUP, SETUP[0]);
-		//System.out.println(boardstyle);
 		if (boardstyle == 0) {
 			Mancala temp = new Mancala(B1, dataModel); // dataModel passed
 		} else {

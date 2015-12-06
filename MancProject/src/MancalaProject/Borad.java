@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 /**
- * 
+ * is the interface that has the method's for the types 2 boards we made.  The normal and custom boards
  * @author John Anderson
- * @author 
- * @author
+ * @author Christopher Dalporto
+ * @author Andy Nguyen
  *
  */
 public interface Borad

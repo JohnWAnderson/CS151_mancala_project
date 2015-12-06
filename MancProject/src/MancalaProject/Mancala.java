@@ -13,10 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 /**
- * 
+ * The main program that combints all of the JPanels in the view onto the JPanel in the corrent game board
  * @author John Anderson
- * @author 
- * @author
+ * @author Christopher Dalporto
+ * @author Andy Nguyen
  *
  */
 public class Mancala implements ChangeListener
@@ -108,7 +108,9 @@ public class Mancala implements ChangeListener
 	/**
 	 * when there is a statechange the refresh is called
 	 */
-
+	/**
+	 * calls a method to repaint the view
+	 */
 	@Override
 	public void stateChanged(ChangeEvent e) 
 	{

@@ -4,8 +4,8 @@ import javax.swing.JOptionPane;
 /**
  * 
  * @author John Anderson
- * @author 
- * @author
+ * @author Christopher Dalporto
+ * @author Andy Nguyen
  *
  */
 public class MancalaTester

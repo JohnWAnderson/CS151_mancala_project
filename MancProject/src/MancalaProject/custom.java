@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 /**
  *  interface that draws the pis in a custom color and in a retangle shape.
  * @author John Anderson
- * @author 
- * @author
+ * @author Christopher Dalporto
+ * @author Andy Nguyen
  *
  */
 public class custom implements Borad

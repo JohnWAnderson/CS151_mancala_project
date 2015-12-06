@@ -10,10 +10,11 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 /**
- * 
+ * uses the stratagy patteren to draw the pits
+ * has all of the date information for the pit
  * @author John Anderson
- * @author 
- * @author
+ * @author Christopher Dalporto
+ * @author Andy Nguyen
  *
  */
 public class Pit implements Icon, MouseListener

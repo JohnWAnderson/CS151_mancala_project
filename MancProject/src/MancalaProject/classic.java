@@ -13,14 +13,18 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 /**
- * 
+ * the classic board that uses circles and has blue colors.
+ * this uses the stratagy pattern form the board interface and the stratagy
  * @author John Anderson
- * @author 
- * @author
+ * @author Christopher Dalporto
+ * @author Andy Nguyen
  *
  */
 public class classic implements Borad
 {
+	/**
+	 * draws the big mancala pit
+	 */
 	@Override
 	public void drawbigpits(Graphics2D g2, int x, int y, int stones, int size) {
 		 Ellipse2D.Double pit = new Ellipse2D.Double(x,y,size/2,size);
@@ -36,7 +40,9 @@ public class classic implements Borad
 		g2.setColor(Color.BLACK);
 		g2.drawString(temp, x, y+15);
 	}
-
+	/**
+	 * draws the small pits 
+	 */
 	@Override
 	public void drawpits(Graphics2D g2, int x, int y, int stones, int size) {
 		 Ellipse2D.Double pit = new Ellipse2D.Double(x,y,size,size);
@@ -52,7 +58,10 @@ public class classic implements Borad
 			g2.setColor(Color.BLACK);
 			g2.drawString(temp, x, y);
 	}
-
+	/**
+	 * picks a random number for the spot of the stones in the pits
+	 * @return temp a random number
+	 */
 	@Override
 	public int stonespot() 
 	{
@@ -60,7 +69,10 @@ public class classic implements Borad
 		int temp = random.nextInt(((50-25) +1) +0);
 		return temp;
 	}
-
+	/**
+	 * picks a random number for the spot of the stones in the bigpits
+	 * @return temp a random number
+	 */
 	@Override
 	public int bigstonesspot() {
 		Random random = new Random();

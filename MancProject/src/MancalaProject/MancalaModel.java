@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 /**
- * 
+ * the model that controlls all of the data 
+ * has the arraylist of pits and arraylist of bigpits
+ * has all of the controlling game rules 
  * @author John Anderson
- * @author 
- * @author
+ * @author Christopher Dalporto
+ * @author Andy Nguyen
  *
  */
 public class MancalaModel 
@@ -35,38 +37,74 @@ public class MancalaModel
 		listeners = new ArrayList<ChangeListener>();	
 		undo = 3;
 	}
+	/**
+	 * checks what players turn it is
+	 * @return curPlayer  the number related to the player
+	 */
 	public int getPlayer() {
 		return this.curPlayer;
 	}
+	/**
+	 * calls to see if you won a retake turn
+	 * @return boolean  true or false to retake turn
+	 */
 	public boolean retaketurn()
 	{
 		return this.retaketurn;
 	}
+	/**
+	 * tells if player 2 or not
+	 * @return boolean  if player 2 true if not false 
+	 */
 	public boolean player2Turn()
 	{
 		return this.curPlayer == 1;
 	}
+	/**
+	 * tells the current size of the pits arraylist
+	 * @return pits.size()  the size of the pits
+	 */
 	public int pitsSize()
 	{
 		return pits.size();
 	}
+	/**
+	 * sets the undo back to 3
+	 */
 	public void setUndo()
 	{
 		this.undo = 3;
 	}
+	/**
+	 * adds mancal pit to bigpit
+	 * @param bp the pit to add to the arraylist
+	 */
 	public void addBigPit(BigPit bp)
 	{
 		bigPits.add(bp);
 	}
+	/**
+	 * returns the amount of stones in their pit
+	 * @param i the player number
+	 * @return stones  the amount of stones the player has in his pit
+	 */
 	public int getPlayerPitStones(int i)
 	{
 		return bigPits.get(i).getstones();
 	}
+	/**
+	 * keeps track of the current undos
+	 * @return undo returns the amount in the undo
+	 */
 	public int Undo()
 	{
-		this.undo *= -1;
+		this.undo -= 1;
 		return this.undo;
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean checkUndo()
 	{
 		return (this.undo > 0);

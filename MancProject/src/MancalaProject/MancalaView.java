@@ -20,8 +20,8 @@ import javax.swing.event.ChangeListener;
 /**
  * 
  * @author John Anderson
- * @author 
- * @author
+ * @author Christopher Dalporto
+ * @author Andy Nguyen
  *
  */
 public class MancalaView

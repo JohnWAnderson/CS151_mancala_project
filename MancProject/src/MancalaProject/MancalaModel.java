@@ -26,7 +26,7 @@ public class MancalaModel
 	private int undo;
 	private boolean gameOver = false;
 	private boolean retaketurn;
-	private String lastPickedRow = "top";
+	private String lastPickedRow = "bot";
 	
 	public MancalaModel()
 	{
@@ -96,9 +96,12 @@ public class MancalaModel
 	 * keeps track of the current undos
 	 * @return undo returns the amount in the undo
 	 */
-	public int Undo()
+	/*public int Undo()
 	{
 		this.undo -= 1;
+		return this.undo;
+	}*/
+	public int getUndo() {
 		return this.undo;
 	}
 	/**
@@ -142,6 +145,7 @@ public class MancalaModel
 	}
 	public void undoCalled()
 	{
+		if ((this.getLastMove().equals("bot") && this.curPlayer == 1) || (this.getLastMove().equals("top") && this.curPlayer == -1)) {
 		undo--;
 		pits = new ArrayList<Pit>();
 		for (Pit p : tempPits) {
@@ -155,6 +159,10 @@ public class MancalaModel
 		curPlayer = curPlayer * -1;
 		for(ChangeListener l : this.listeners) {
 			l.stateChanged(new ChangeEvent(this));
+		}
+		}
+		else {
+			return;
 		}
 		
 	}

@@ -218,9 +218,9 @@ public class MancalaView
 			
 				if(model.checkUndo() == true)
 				{
-					undoTurn = new JLabel("You have " + model.Undo() + "/3 undo's left");
+					undoTurn = new JLabel("You have " + model.getUndo() + "/3 undo's left");
 				}
-				else if(model.Undo() ==0)
+				else if(model.checkUndo() == false)
 				{
 					undoTurn = new JLabel("You have no more undos");
 				}

@@ -334,7 +334,8 @@ public class MancalaModel
 						else if(selectedPit == 12){
 							selectedPit = -1;}
 						else
-							{circle.get(selectedPit).addStones(1);
+						{	
+							circle.get(selectedPit).addStones(1);
 								if(totalStones == 0 && (circle.get(selectedPit).getstones() ==1))
 								{
 									System.out.println("IT GOT CALLED");
@@ -363,13 +364,21 @@ public class MancalaModel
 										owned = 0;
 									else
 										owned = 11;
+									if( player2Turn() == true  &&(selectedPit <= 5 && selectedPit >= 0) )
+									{
 									int taken = circle.get(owned).getstones() +1;
 									circle.get(owned).Clear();
-									circle.get(selectedPit).Clear();
-									if(curPlayer == -1)
-										bigPits.get(1).addStones(taken);
-									else
+									circle.get(selectedPit).Clear();	
 										bigPits.get(0).addStones(taken);
+									}
+									else if( player2Turn() == false && selectedPit <= 11 && selectedPit >= 6)
+									{
+										int taken = circle.get(owned).getstones() +1;
+										circle.get(owned).Clear();
+										circle.get(selectedPit).Clear();
+											bigPits.get(1).addStones(taken);
+			
+									}
 								}
 			} }
 		}
